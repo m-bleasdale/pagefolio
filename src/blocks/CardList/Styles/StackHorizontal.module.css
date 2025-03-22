@@ -1,0 +1,35 @@
+.ListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.Group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.CardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    max-height: 241px;
+    overflow-y: hidden;
+    border-radius: 14px;
+}
+
+#clickable.CardContainer:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.CardContainer:hover {
+    box-shadow: 0 10px 15px -3px #0000001a;
+    transition: 0.25s;
+}

@@ -1,0 +1,20 @@
+.SocialsContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.SocialLink {
+    height: 38px;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SocialLinkImage {
+    height: 38px;
+    width: 38px;
+    cursor: pointer;
+}

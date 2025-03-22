@@ -1,0 +1,29 @@
+.Container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.Main {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    align-items: center;
+    gap: 20px;
+}
+
+.TitleAndLogo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.Main img{
+    height: 40px;
+    width: auto;
+    object-fit: cover;
+}

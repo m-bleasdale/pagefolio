@@ -1,0 +1,14 @@
+.HeaderContainer {
+    display: flex;    
+    justify-content: center;
+}
+
+.Title{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.SubTitle {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
