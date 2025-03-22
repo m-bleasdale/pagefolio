@@ -1,0 +1,88 @@
+.Container{
+    display: grid;
+    grid-template-columns: 30vw 1fr 30vw;
+}
+
+@media (max-width: 1670px) {
+    .Container{
+        display: grid;
+        grid-template-columns: 28vw 1fr 28vw;
+    }
+}
+
+@media (max-width: 1375px) {
+    .Container{
+        display: grid;
+        grid-template-columns: 25vw 1fr 25vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .Container{
+        display: grid;
+        grid-template-columns: 64px 1fr 64px;
+    }
+}
+
+@media (max-width: 550px) {
+    .Container{
+        display: grid;
+        grid-template-columns: 32px 1fr 32px;
+    }
+}
+
+.ButtonContainer{
+    grid-column-start: 2;
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    padding: 15px;
+    border-radius: 14px;
+    align-items: center;
+
+    position: relative;
+    z-index: 0;
+  
+}
+
+.ButtonContainer:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    box-shadow: 0 10px 15px -3px #0000001a;
+    transition: 0.25s;
+}
+
+.ButtonContainer:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.Icon {
+    height: 32px;
+    width: 32px;
+}
+  
+.ButtonText{
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.ShareContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.ShareContainer svg {
+    height: 32px;
+    width: 32px;
+}
+
+.ShareContainer:hover {
+    filter: brightness(0);
+    transition: 0.25s;
+}

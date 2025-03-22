@@ -2,6 +2,7 @@ import styles from "@/app/styles/page.module.css";
 import Header from "@/blocks/Header/Header";
 import About from "@/blocks/About/About";
 import CardList from "@/blocks/CardList/CardList";
+import ButtonLink from "@/blocks/ButtonLink/ButtonLink";
 
 const global = {
   backgroundColor: '#fdfdfd',
@@ -9,6 +10,7 @@ const global = {
   foreground: '#000000', //Mainly text
   foreground_light: '#4D4D4D', //Not user input (30% lightened of foreground)
   primary: '#D52B1E', //Mainly used for buttons or icons
+  foreground_onPrimary: '#ffffff', //Used when primary colour is a background and foreground colour is hard to see
   accent: '#f0f0f0', //Mainly used for secondary buttons or icons
   border: '1px solid #dddddd', //"none" if no border or "2px solid <color>"
   shadowsEnabled: false,
@@ -48,6 +50,36 @@ export default function Home() {
           options={{
             align: 'center',
             highlighted: false //false; 'minimal'; or 'primary';
+          }}
+          global={global}
+        />
+        <ButtonLink
+          data={{
+            ButtonText: "The Shell Oil Promise",
+            IconSource: 'document-graph'
+          }}
+          options={{
+            variant: "primary" //'minimal'; 'primary'; or 'bare'
+          }}
+          global={global}
+        />
+        <ButtonLink
+          data={{
+            ButtonText: "Our 2025 Projections",
+            IconSource: 'document-graph'
+          }}
+          options={{
+            variant: "minimal" //'minimal'; 'primary'; or 'bare'
+          }}
+          global={global}
+        />
+        <ButtonLink
+          data={{
+            ButtonText: "Legal documentation for press",
+            IconSource: 'document-graph'
+          }}
+          options={{
+            variant: "bare" //'minimal'; 'primary'; or 'bare'
           }}
           global={global}
         />
