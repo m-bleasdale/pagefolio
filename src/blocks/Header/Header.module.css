@@ -1,6 +1,34 @@
-.HeaderContainer {
-    display: flex;    
-    justify-content: center;
+.HeaderContainer{
+    display: grid;
+    grid-template-columns: 25vw 1fr 25vw;
+}
+
+@media (max-width: 1670px) {
+    .HeaderContainer{
+        display: grid;
+        grid-template-columns: 20vw 1fr 20vw;
+    }
+}
+
+@media (max-width: 1375px) {
+    .HeaderContainer{
+        display: grid;
+        grid-template-columns: 15vw 1fr 15vw;
+    }
+}
+
+@media (max-width: 800px) {
+    .HeaderContainer{
+        display: grid;
+        grid-template-columns: 64px 1fr 64px;
+    }
+}
+
+@media (max-width: 550px) {
+    .HeaderContainer{
+        display: grid;
+        grid-template-columns: 32px 1fr 32px;
+    }
 }
 
 .Title{

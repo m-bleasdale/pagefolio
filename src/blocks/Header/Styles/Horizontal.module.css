@@ -1,7 +1,7 @@
 .Container {
+    grid-column-start: 2;
     display: flex;
     flex-direction: row;
-    width: 50%;
     align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -10,7 +10,7 @@
 .Main {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 85%;
     align-items: center;
     gap: 20px;
 }
@@ -31,6 +31,7 @@
 /* Convert to variant of vertical when on small screen */
 @media (max-width: 1180px) {
     .Container{
+        grid-column-start: 2;
         display: flex;
         flex-direction: column;
         gap: 15px;
