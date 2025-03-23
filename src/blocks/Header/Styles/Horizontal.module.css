@@ -27,3 +27,35 @@
     width: auto;
     object-fit: cover;
 }
+
+/* Convert to variant of vertical when on small screen */
+@media (max-width: 1180px) {
+    .Container{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 20px;
+    }
+    
+    .Main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .TitleAndLogo{
+        display: flex;
+        flex-direction: left;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .Main img{
+        height: 40px;
+        width: auto;
+        object-fit: cover;
+    }
+}
