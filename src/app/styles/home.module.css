@@ -1,0 +1,85 @@
+.Home{
+    display: grid;
+    grid-template-columns: 25vw 1fr 25vw;
+    grid-template-rows: 10vh 1fr 10vh;
+    min-height: 100svh;
+}
+
+@media (max-width: 1670px) {
+    .Home{
+        display: grid;
+        grid-template-columns: 20vw 1fr 20vw;
+        min-height: 100svh;
+    }
+}
+
+@media (max-width: 1375px) {
+    .Home{
+        display: grid;
+        grid-template-columns: 15vw 1fr 15vw;
+        min-height: 100svh;
+    }
+}
+
+@media (max-width: 800px) {
+    .Home{
+        display: grid;
+        grid-template-columns: 64px 1fr 64px;
+        min-height: 100svh;
+    }
+}
+
+@media (max-width: 550px) {
+    .Home{
+        display: grid;
+        grid-template-columns: 32px 1fr 32px;
+        min-height: 100svh;
+    }
+}
+
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    text-align: center;
+}
+
+.SampleLink{
+    display: grid;
+
+    grid-template-columns: 5vw 1fr 5vw;
+
+}
+
+.SampleLink a {
+    grid-column-start: 2;
+    padding: 15px;
+    border-radius: 14px;
+    position: relative;
+    z-index: 0;
+}
+
+.SampleLink a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    box-shadow: 0 10px 15px -3px #0000001a;
+    transition: 0.25s;
+}
+
+.SampleLink a:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.SampleLink a p {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
