@@ -28,7 +28,7 @@ export default function Cover ({data, global}) {
 
         return(
             <div className={CardListStyles.Cover}>
-                <div className={CardListStyles.CoverDate} style={{backgroundColor: global.altBackgroundColor}}>
+                <div className={CardListStyles.CoverDate} style={{backgroundColor: global.altBackgroundColor, color: global.foreground_onAlt}}>
                     <p className={CardListStyles.CoverDateDay}>{Day}</p>
                     <p className={CardListStyles.CoverDateMonthAndYear}>{Month} {Year}</p>
                 </div>

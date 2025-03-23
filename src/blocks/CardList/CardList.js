@@ -74,7 +74,7 @@ export default function CardList({data, options, global}) {
                     {canShowMore && (
                         <div className={LayoutStyles.Group}>
                             <div className={CardListStyles.ShowMoreContainer}>
-                                <button className={CardListStyles.ShowMoreButton} onClick={handleShowMore} style={{color: global.primary}}>
+                                <button className={CardListStyles.ShowMoreButton} onClick={handleShowMore} style={{color: global.foreground}}>
                                     Show More
                                 </button>
                             </div>

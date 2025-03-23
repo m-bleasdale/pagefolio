@@ -14,6 +14,7 @@ export default function ButtonLink ({data, options, global}) {
 
     if(options.variant === 'minimal'){
         additionalStyles.background_color = global.altBackgroundColor;
+        additionalStyles.color = global.foreground_onAlt
         additionalStyles.border = global.border;
     }
     else if(options.variant === 'primary'){

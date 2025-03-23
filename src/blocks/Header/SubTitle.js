@@ -7,7 +7,7 @@ export default function SubTitle ({children, global}) {
     return(
         <div className={HeaderStyles.SubTitle}
             style={{
-                color: global.foreground_light
+                color: global.foreground_light_onAlt
             }}
         >
         {children}

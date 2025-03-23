@@ -7,7 +7,7 @@ export default function Title ({children, global}) {
     return(
         <div className={HeaderStyles.Title}
             style={{
-                color: global.foreground        
+                color: global.foreground_onAlt        
             }}
         >
         {children}
