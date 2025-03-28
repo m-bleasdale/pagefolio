@@ -1,6 +1,12 @@
+'use client'; //Dev only disable later
+
+import { useUser } from '@auth0/nextjs-auth0/client';
 import styles from "@/app/styles/home.module.css";
 
 export default function Home() {
+  const { user, error, isLoading } = useUser();
+  console.log(user);
+
   return(
     <div className={styles.Home}>
       <div className={styles.main}>
@@ -16,6 +22,9 @@ export default function Home() {
             <p>Coffee Planet</p>
           </a>
         </div>
+        {user && <p>{user.nickname}</p>}
+        <a href="/api/auth/login">Login</a>
+        <a href="/api/auth/logout">Logout</a>
       </div>
     </div>
   );

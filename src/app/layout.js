@@ -1,5 +1,6 @@
 import "@/app/styles/globals.css";
-import { Montserrat } from 'next/font/google'
+import { Montserrat } from 'next/font/google';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export const metadata = {
   title: "PageFolio",
@@ -11,9 +12,11 @@ const montserrat = Montserrat({ subsets: ['latin'] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={montserrat}>
-        {children}
-      </body>
+      <UserProvider>
+        <body className={montserrat}>
+          {children}
+        </body>
+      </UserProvider>
     </html>
   );
 }

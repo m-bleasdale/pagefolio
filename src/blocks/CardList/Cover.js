@@ -16,15 +16,14 @@ export default function Cover ({data, global}) {
     }
     if(data.Type === "Date")
     {
-        console.log(data.Date)
-
         if(!data.Date) return;
+        const date = new Date(data.Date)
 
         const calendarMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-        const Day = data.Date.getDate();
-        const Month = calendarMonths[data.Date.getMonth()];
-        const Year = data.Date.getFullYear();
+        const Day = date.getDate();
+        const Month = calendarMonths[date.getMonth()];
+        const Year = date.getFullYear();
 
         return(
             <div className={CardListStyles.Cover}>

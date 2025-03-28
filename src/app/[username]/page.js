@@ -1,36 +1,59 @@
 import Builder from '@/app/Builder';
+import { createClient } from '@/utils/supabase/server';
 import styles from '@/app/styles/page.module.css';
 
 import {shell, coffeeplanet} from '@/app/TempData';
 
+
 export async function generateMetadata({ params }) {
-    const slug = params.username;
-    let data;
-    if(slug === 'shell') data = shell;
-    if(slug === 'coffeeplanet') data = coffeeplanet;
+    const URLParams = await params;
 
-    const Title = data.meta?.title || data.username;
+    const supabase = await createClient();
 
+    const { data, error } = await supabase
+        .from('pages')
+        .select('title, meta')
+        .eq('slug', URLParams.username.toLowerCase())
+        .single();
+
+    if (error || !data) {
+        return {
+            title: 'Page Not Found',
+            description: 'This page does not exist.',
+        };
+    }
+    
     return {
-      title: `${Title} - PageFolio`,
+      title: `${data.title} - PageFolio`,
       description: data.meta?.description || ''
     };
   }
   
 
 export default async function Page({ params }) {
-    const slug = params.username;
-    let data;
-    if(slug === 'shell') data = shell;
-    if(slug === 'coffeeplanet') data = coffeeplanet;
+    const URLParams = await params;
 
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+        .from('pages')
+        .select('global_options, blocks')
+        .eq('slug', URLParams.username.toLowerCase())
+        .single();
+
+    if (error || !data) {
+        return (
+            <p>Not found</p>
+        )
+    }
+    
     return (
         <div 
         className={styles.page}
-        style={{backgroundColor: data.global.backgroundColor}}
+        style={{backgroundColor: data.global_options.backgroundColor}}
         >
             <div className={styles.main}>
-                <Builder blocks={data.blocks} global={data.global} />
+                <Builder blocks={data.blocks} global={data.global_options} />
             </div>
         </div>
     )
