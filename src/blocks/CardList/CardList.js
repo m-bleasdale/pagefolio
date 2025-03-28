@@ -33,7 +33,6 @@ export default function CardList({data, options, global}) {
             else {
                 setCardsPerGroup(3);
             }
-            console.log(width);
         };
 
         handleResize();
