@@ -1,11 +1,10 @@
 'use client'; //Dev only disable later
 
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '@auth0/nextjs-auth0';
 import styles from "@/app/styles/home.module.css";
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
-  console.log(user);
 
   return(
     <div className={styles.Home}>

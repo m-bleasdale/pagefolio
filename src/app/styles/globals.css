@@ -1,6 +1,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --foreground-light: #6f6f6f;
+  --background-darker: #eeeeee;
+
+  --primary: #3686F7;
+  --primary-darker: #2c71d1;
+  --primary-light: #a7c4ec;
+  --secondary-green: #5FD068;
+  --secondary-red: #FF6B5E;
+
+  --error: #991313;
 }
 
 /*

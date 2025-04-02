@@ -1,0 +1,191 @@
+.Page{
+    display: grid;
+    grid-template-columns: 1fr 32vw;
+    min-height: 100svh;
+}
+
+.MainContainer {
+    display: grid;
+    grid-column-start: 1;
+    grid-template-columns: 15vw 1fr 15vw;
+    grid-template-rows: 10vh 1fr 10vh;
+    min-height: 100svh;
+}
+
+.FormContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    text-align: left;
+}
+
+.InfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.InfoContainer h1{
+    font-size: 3rem;
+}
+
+.InfoContainer p {
+    font-size: 1.1rem;
+}
+
+.SlugContainer h2, .PageTypeContainer h2{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.SlugContainer, .PageTypeContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.SideContainer{
+    background-color: #d3d3d3;
+    grid-column-start: 2;
+    min-height: 100svh;
+}
+
+.InputContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--background-darker);
+    gap: 5px;
+    width: 500px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.InputContainer p {
+    font-size: 1.6rem;
+    color: var(--foreground);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version */
+}
+
+.InputContainer input {
+    width: 100%;
+    outline: none;
+    border: none;
+
+    background-color: inherit;
+    font-family: inherit;
+    
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.Continue {
+    width: 250px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.Continue:hover{
+    background-color: var(--primary-darker);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}
+
+.Continue#loading {
+    background-color: var(--primary-light);
+    cursor: not-allowed;
+}
+
+.ErrorContainer {
+    height: 1rem
+}
+
+.Error {
+    color: var(--error);
+    font-weight: 500;
+}
+
+.Error a {
+    color: var(--primary);
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+@media (max-width: 1670px) {
+    .Page{
+        grid-template-columns: 1fr 32vw;
+    }
+    
+    .MainContainer {
+        grid-column-start: 1;
+        grid-template-columns: 10vw 1fr 10vw;
+    }
+}
+
+@media (max-width: 1175px) {
+    .Page{
+        grid-template-columns: 10vw 1fr 10vw;
+    }
+
+    .MainContainer {
+        grid-column-start: 2;
+        grid-template-columns: 10vw 1fr 10vw;
+    }
+
+    .SideContainer{
+        width: 0;
+    }
+
+    .FormContainer{
+        text-align: center;
+    }
+
+    .InfoContainer{
+        align-items: center;
+    }
+
+    .InfoContainer h1 {
+        font-size: 2rem;
+    }
+
+    .SlugContainer, .FormContainer {
+        align-items: center;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .Page{
+        grid-template-columns: 64px 1fr 64px;
+    }
+    
+    .MainContainer {
+        grid-column-start: 2;
+        grid-template-columns: 0vw 1fr 0vw;
+    }
+
+    .InputContainer {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 550px) {
+    .Page{
+        grid-template-columns: 32px 1fr 32px;
+    }
+
+}

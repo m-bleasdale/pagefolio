@@ -1,0 +1,38 @@
+/* RadioButtons.css */
+.RadioContainer {
+    display: flex;
+    gap: 20px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version */
+
+}
+
+.RadioBox {
+    cursor: pointer;
+    padding: 7px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--foreground-light);
+    transition: all 0.3s ease;
+}
+
+.RadioBox input {
+    opacity: 0;
+    position: absolute;
+}
+
+.RadioBox#selected {
+    background-color: var(--primary);
+    color: var(--background);
+    border: 1px solid var(--primary);
+}
+
+.RadioBox:hover {
+    box-shadow: 0 10px 15px -3px #0000001a;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
