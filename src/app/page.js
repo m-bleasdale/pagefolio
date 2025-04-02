@@ -22,8 +22,8 @@ export default function Home() {
           </a>
         </div>
         {user && <p>{user.nickname}</p>}
-        <a href="/api/auth/login">Login</a>
-        <a href="/api/auth/logout">Logout</a>
+        <a href="/auth/login">Login</a>
+        <a href="/auth/logout">Logout</a>
       </div>
     </div>
   );

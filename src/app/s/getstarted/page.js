@@ -20,10 +20,11 @@ export default function Build() {
     const [loading, setLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-
     //Verify user has not already got a page
+    //Or is not logged in
     useEffect(() => {
         if(isLoading) return;
+        if(!user) router.push('/auth/login?returnTo=/s/build');
         async function getPageID () {
             const supabase = createClient();
             const { data, error } = await supabase.from('pages').select('id').eq('user_id', user.sub);

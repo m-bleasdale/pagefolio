@@ -16,8 +16,10 @@ export default function Build() {
     const [PageID, SetPageID] = useState();
 
     //Get ID of page to update
+    //And redirect not logged in user
     useEffect(() => {
         if(isLoading) return;
+        if(!user) router.push('/auth/login?returnTo=/s/build');
 
         async function getPageID () {
             const supabase = createClient();
