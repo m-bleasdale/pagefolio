@@ -12,7 +12,7 @@ export default function Home() {
         <h1>PageFolio Testing Enviroment</h1>
         <p>The following pages are sample pages.</p>
         <div className={styles.SampleLink}>
-          <a href="/shell" style={{backgroundColor: '#D52B1E', color: '#ffffff'}}>
+          <a href="/shelloil" style={{backgroundColor: '#D52B1E', color: '#ffffff'}}>
             <p>Shell Oil Co</p>
           </a>
         </div>
@@ -24,6 +24,7 @@ export default function Home() {
         {user && <p>{user.nickname}</p>}
         <a href="/auth/login">Login</a>
         <a href="/auth/logout">Logout</a>
+        <a href="/s/build">Build</a>
       </div>
     </div>
   );
