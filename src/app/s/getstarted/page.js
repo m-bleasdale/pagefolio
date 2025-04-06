@@ -57,8 +57,12 @@ export default function Build() {
         e.preventDefault();
         setLoading(true);
         setErrorMessage('');
-        const page_type = selectedRadioOption;
-        const slugInput = slug;
+
+        const pageTypeOptions = {
+            'option0': 'Personal',
+            'option1': 'Organisation',
+            'option2': 'Other'
+        }
 
         const errorMessages = {
             "slug-bad-length": "Username must be between 3 and 30 characters.",
@@ -66,6 +70,10 @@ export default function Build() {
             "slug-reserved": "This username is reserved.",
             "slug-taken": "This username is already in use."
         }
+
+        const page_type = pageTypeOptions[selectedRadioOption];
+        const slugInput = slug;
+
 
         //Presence check
         if (!slugInput) {
@@ -87,7 +95,7 @@ export default function Build() {
                 const errorData = await response.json();
                 setErrorMessage(errorMessages[errorData.message] || 'Something went wrong!');
             } else {
-                //redirect
+                router.push('/s/build');
             }
         } catch (err) {
             console.error('Error:', err);

@@ -12,16 +12,19 @@ export async function POST(req) {
     }
     const auth0Sub = session.user.sub;
 
-    const supabase = await createClient(session.accessToken);
+    const supabase = await createClient(); //may want RLS check too -- important (access token is in session.tokenSet.accessToken);
 
     try {
         const { slugInput, page_type } = await req.json();
 
         const slug = slugInput.toLowerCase();
 
+        const default_title = slug;
+        const default_meta = {"description": `${slug}'s site, powered by PageFolio.`}
+
         const { data, error } = await supabase
             .from('pages')
-            .insert([{ slug, page_type, user_id: auth0Sub }]);
+            .insert([{ slug, page_type, user_id: auth0Sub, title: default_title, meta: default_meta }]);
 
         console.log(error);
 
