@@ -4,6 +4,7 @@ import styles from '@/app/styles/page.module.css';
 
 import {shell, coffeeplanet} from '@/app/TempData';
 import Notfound from './notFound';
+import Default from './default';
 
 
 export async function generateMetadata({ params }) {
@@ -45,6 +46,12 @@ export default async function Page({ params }) {
     if (error || !data) {
         return (
             <Notfound />
+        )
+    }
+    
+    if (!data.blocks) {
+        return (
+            <Default slug={URLParams.username.toLowerCase()}/>
         )
     }
     

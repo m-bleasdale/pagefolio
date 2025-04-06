@@ -1,0 +1,154 @@
+.Page{
+    display: grid;
+    grid-template-columns: 25vw 1fr 25vw;
+    grid-template-rows: 10vh 1fr 10vh;
+    min-height: 100svh;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    text-align: center;
+}
+
+.DefaultWidget{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.DefaultWidget img {
+    height: 250px;
+    width: 250px;
+}
+
+.DefaultText{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 20px;
+}
+
+.DefaultText h1 {
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.DefaultText p {
+    font-size: 1.5rem;
+}
+
+.DefaultText span {
+    font-weight: 600;
+}
+
+.Claim {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.Claim p {
+    font-size: 1.1rem;
+}
+
+.ClaimButton{
+    width: 250px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.ClaimButton:hover{
+    background-color: var(--primary-darker);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}
+
+.WhatIs{
+    color: var(--primary);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.WhatIs:hover{
+    color: var(--primary-darker);
+}
+
+.footer {
+    grid-row-start: 3;
+    grid-column-start: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.footer img{
+    height: 48px;
+}
+
+
+
+@media (max-width: 1670px) {
+    .Page{
+        grid-template-columns: 20vw 1fr 20vw;
+    }
+}
+
+@media (max-width: 1375px) {
+    .Page{
+        grid-template-columns: 15vw 1fr 15vw;
+        grid-template-rows: 2vh 1fr 10vh;
+    }
+
+    .DefaultWidget{
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .DefaultWidget img {
+        height: 185px;
+        width: 185px;
+    }
+    
+    .DefaultText{
+        text-align: center;
+        gap: 15px;
+    }
+
+    .DefaultText h1 {
+        font-size: 3rem;
+    }
+
+    .DefaultText p {
+        font-size: 1.25rem;
+    }
+
+    .Claim{
+        margin-top: 20px;
+    }
+
+}
+
+@media (max-width: 800px) {
+    .Page{
+        grid-template-columns: 64px 1fr 64px;
+    }
+}
+
+@media (max-width: 550px) {
+    .Page{
+        grid-template-columns: 32px 1fr 32px;
+    }
+}
