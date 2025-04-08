@@ -2,11 +2,15 @@
 
 import { React, useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import { useWindowSize } from 'react-use';
 
 import { createClient } from '@/utils/supabase/client';
 
-import styles from "@/app/styles/home.module.css";
+import NoMobile from './Components/NoMobile';
+import BlockSelector from './Components/BlockSelector/BlockSelector';
+
+import styles from "./build.module.css";
 
 export default function Build() {
     const { user, error, isLoading } = useUser();
@@ -14,6 +18,7 @@ export default function Build() {
     const router = useRouter();
 
     const [PageID, SetPageID] = useState();
+    const [displayMobile, SetDisplayMobile] = useState(false);
 
     //Get ID of page to update
     //And redirect not logged in user
@@ -42,9 +47,20 @@ export default function Build() {
 
     }, [isLoading]);
 
+
+    //Display error message if trying to use on mobile
+    const { width } = useWindowSize();
+    useEffect(() => {
+        if(width < 1000) SetDisplayMobile(true);
+        else SetDisplayMobile(false)
+    }, [width]);
+    if(displayMobile) return <NoMobile /> 
+
     return(
-        <div className={styles.Home}>
-            <p>Hello</p>
+        <div className={styles.Page}>
+            <div></div>
+            <div></div>
+            <BlockSelector />
         </div>
     );
 };

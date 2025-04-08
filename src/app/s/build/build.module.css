@@ -1,0 +1,5 @@
+.Page {
+    display: grid;
+    grid-template-columns: 22vw 1fr 22vw;
+    min-height: 100svh;
+}

@@ -3,6 +3,8 @@
 import { useUser } from '@auth0/nextjs-auth0';
 import styles from "@/app/styles/home.module.css";
 
+import samplestyles from "@/app/styles/samplestyles.module.css";
+
 export default function Home() {
   const { user, error, isLoading } = useUser();
 
@@ -25,6 +27,19 @@ export default function Home() {
         <a href="/auth/login">Login</a>
         <a href="/auth/logout">Logout</a>
         <a href="/s/build">Build</a>
+
+        <div style={{textAlign: "left", display:"flex", flexDirection:"column", gap:"20px"}}>
+          <h1 className={samplestyles.majorheading}>Major Title</h1>
+          <h1 className={samplestyles.heading}>Heading</h1>
+          <h2 className={samplestyles.subheading}>Sub heading</h2>
+          <h3 className={samplestyles.minorheading}>Minor Heading</h3>
+          <p className={samplestyles.paragraph}>Paragraph</p>
+          <p className={samplestyles.error}>Error</p>
+          <p className={samplestyles.link}>Link</p>
+          <button className={samplestyles.button}>Button</button>
+        </div>
+
+
       </div>
     </div>
   );

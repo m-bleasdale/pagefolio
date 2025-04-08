@@ -1,0 +1,56 @@
+.majorheading{
+    font-size: 6rem;
+    font-weight: 500;
+}
+
+.heading{
+    font-size: 3rem;
+}
+
+.subheading{
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.minorheading{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.paragraph {
+    font-size: 1.1rem;
+}
+
+.error{
+    color: var(--error);
+    font-weight: 500;
+}
+
+.link{
+    color: var(--primary);
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.link:hover{
+    color: var(--primary-darker);
+    cursor: pointer;
+}
+
+.button{
+    width: 250px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.button:hover{
+    background-color: var(--primary-darker);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}
