@@ -21,6 +21,11 @@
     font-size: 1.1rem;
 }
 
+.info {
+    font-size: 1rem;
+    color: var(--foreground-accent);
+}
+
 .error{
     color: var(--error);
     font-weight: 500;

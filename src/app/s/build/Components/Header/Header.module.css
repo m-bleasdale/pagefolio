@@ -1,0 +1,69 @@
+.Container {
+    display: grid;
+    grid-template-columns: 17vw 1fr 17vw;
+    border-bottom: 1px solid var(--background-darker);
+}
+
+.Left {
+    grid-column-start: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    gap: 40px;
+}
+
+.Logo img {
+    height: 5vh;
+    width: auto;
+}
+
+.Help {
+    color: var(--primary);
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.Help:hover{
+    color: var(--primary-darker);
+    cursor: pointer;
+}
+
+.Right {
+    grid-column-start: 3;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    margin-right: 40px;
+    gap: 40px;
+}
+
+.Icon {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Icon svg{
+    height: 3.5vh;
+    width: auto;
+}
+
+.Publish button{
+    font-size: 1.05rem;
+    font-family: inherit;
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    cursor: pointer;
+    padding: 9px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.Publish button:hover{
+    background-color: var(--primary-darker);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}

@@ -9,6 +9,7 @@ import { createClient } from '@/utils/supabase/client';
 
 import NoMobile from './Components/NoMobile';
 import BlockSelector from './Components/BlockSelector/BlockSelector';
+import Header from './Components/Header/Header';
 
 import styles from "./build.module.css";
 
@@ -58,9 +59,12 @@ export default function Build() {
 
     return(
         <div className={styles.Page}>
-            <div></div>
-            <div></div>
-            <BlockSelector />
+            <Header />
+            <div className={styles.Main}>
+                <div></div>
+                <div></div>
+                <BlockSelector />
+            </div>
         </div>
     );
 };

@@ -34,6 +34,7 @@ export default function Home() {
           <h2 className={samplestyles.subheading}>Sub heading</h2>
           <h3 className={samplestyles.minorheading}>Minor Heading</h3>
           <p className={samplestyles.paragraph}>Paragraph</p>
+          <p className={samplestyles.info}>Info</p>
           <p className={samplestyles.error}>Error</p>
           <p className={samplestyles.link}>Link</p>
           <button className={samplestyles.button}>Button</button>
