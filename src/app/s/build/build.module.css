@@ -1,11 +1,11 @@
 .Page {
     display: grid;
-    grid-template-rows: 7vh 1fr;
+    grid-template-rows: 70px 1fr;
     min-height: 100svh;
 }
 
 .Main {
     display: grid;
-    grid-template-columns: 17vw 1fr 320px;
+    grid-template-columns: 320px 1fr 320px;
     min-height: 100%;
 }

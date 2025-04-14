@@ -9,6 +9,7 @@ import { createClient } from '@/utils/supabase/client';
 
 import NoMobile from './Components/NoMobile';
 import BlockSelector from './Components/BlockSelector/BlockSelector';
+import GlobalOptions from './Components/GlobalOptions/GlobalOptions';
 import Header from './Components/Header/Header';
 
 import styles from "./build.module.css";
@@ -61,7 +62,7 @@ export default function Build() {
         <div className={styles.Page}>
             <Header />
             <div className={styles.Main}>
-                <div></div>
+                <GlobalOptions />
                 <div></div>
                 <BlockSelector />
             </div>

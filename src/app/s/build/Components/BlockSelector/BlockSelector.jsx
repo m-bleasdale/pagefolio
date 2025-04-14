@@ -56,7 +56,7 @@ export default function BlockSelector() {
     return (
         <div className={styles.Container}>
             <h1>Blocks</h1>
-            <p className={styles.Info}>Press a block to customise it and add it to a PageFolio.</p>
+            <p className={styles.Info}>Press a block to customise it and add it to your PageFolio.</p>
             <div className={styles.Blocks}>
                 {blockGroups.map((group, gindex) => (
                     <div className={styles.GroupContainer} key={gindex}>

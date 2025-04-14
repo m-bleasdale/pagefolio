@@ -23,7 +23,7 @@
 
 .info {
     font-size: 1rem;
-    color: var(--foreground-accent);
+    color: var(--foreground-light);
 }
 
 .error{

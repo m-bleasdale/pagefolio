@@ -17,7 +17,7 @@
 .Info {
     width: 300px;
     font-size: 1rem;
-    color: var(--foreground-accent);
+    color: var(--foreground-light);
     padding: 10px 0px;
 }
 
@@ -59,6 +59,13 @@
     align-items: center;
     flex-direction: column;
     gap: 5px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version */
 }
 
 .BlockContainer:hover {
