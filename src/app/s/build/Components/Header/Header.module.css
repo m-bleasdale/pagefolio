@@ -1,6 +1,6 @@
 .Container {
     display: grid;
-    grid-template-columns: 17vw 1fr 17vw;
+    grid-template-columns: 400px 1fr 400px;
     border-bottom: 1px solid var(--background-darker);
 }
 
@@ -14,7 +14,7 @@
 }
 
 .Logo img {
-    height: 5vh;
+    height: 46px;
     width: auto;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .Icon svg{
-    height: 3.5vh;
+    height: 32px;
     width: auto;
 }
 
