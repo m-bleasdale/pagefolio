@@ -1,6 +1,9 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 
 import styles from './BlockSelector.module.css';
+import customiserStyles from './BlockCustomiser.module.css';
+
+import BlockCustomiser from './BlockCustomiser';
 
 const blockGroups = [
     {
@@ -51,7 +54,48 @@ const blockGroups = [
     }
 ]
 
-export default function BlockSelector() {
+export default function BlockSelector({ onAddBlock }) {
+    const [displayCustomiser, setDisplayCustomiser] = useState(false);
+    const [customiserBlockType, setCustomiserBlockType] = useState('');
+    const [customiserBlockName, setCustomiserBlockName] = useState('');
+    const [customiserBlockIcon, setCustomiserBlockIcon] = useState(<></>);
+
+    function resetCustomiser(){
+        setDisplayCustomiser(false);
+        setCustomiserBlockType('');
+        setCustomiserBlockName('');
+        setCustomiserBlockIcon('');
+    }
+
+    function handleConfirmation(data) {
+        onAddBlock(data);
+        resetCustomiser();
+    }
+
+    function handleBlockPress(blockType, blockName, blockIcon) {
+        setDisplayCustomiser(true);
+        setCustomiserBlockType(blockType);
+        setCustomiserBlockName(blockName);
+        setCustomiserBlockIcon(blockIcon);
+    }
+
+    if(displayCustomiser){
+        return (
+            <div className={styles.Container}>
+                <div className={customiserStyles.TitleContainer}>
+                    <h1>Add New Block</h1>
+                    <svg onClick={resetCustomiser} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </div>
+                <div className={customiserStyles.HeadingContainer}>
+                    {customiserBlockIcon}
+                    <h2>{customiserBlockName}</h2>
+                </div>
+                <BlockCustomiser blockType={customiserBlockType} onConfirmation={(data) => handleConfirmation(data)}/>
+            </div>
+        )
+    }
 
     return (
         <div className={styles.Container}>
@@ -63,7 +107,7 @@ export default function BlockSelector() {
                     <h2>{group.title}</h2>
                     <div className={styles.Group}>
                         {group.blocks.map((block, bindex) => (
-                            <div className={styles.BlockContainer} key={bindex}>
+                            <div className={styles.BlockContainer} key={bindex} onClick={() => handleBlockPress(block.block, block.title, block.icon)}>
                                 {block.icon}
                                 <p>{block.title}</p>
                             </div>

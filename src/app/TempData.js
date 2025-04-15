@@ -35,9 +35,7 @@ const shell = {
             },
             options: {
             layout: 'Vertical_Discrete',
-            socials_style: {
-                variant: 'filled_circle'
-            }
+            socials_variant: 'filled_circle'
             }
         },
         {
@@ -176,9 +174,7 @@ const coffeeplanet = {
             },
             options: {
             layout: 'Horizontal',
-            socials_style: {
-                variant: 'outline'
-            }
+            socials_variant: 'outline'
             }
         },
         {
