@@ -3,16 +3,20 @@ import { React, useState } from 'react';
 import styles from './BlockCustomiser.module.css';
 
 import fields from './CustomiserFields';
-import {OptionSelector, SmallTextBox, SmallTextArea, LargeTextArea} from './CustomiserInputs';
+import {OptionSelector, SmallTextBox, SmallTextArea, LargeTextArea, PageLogoUpload, SocialSelector} from './CustomiserInputs';
 
 function Input ({onUpdate, type, options}) {
 
     if(type === 'options' && options) return <OptionSelector options={options} onUpdate={(selectedOption) => onUpdate(selectedOption)} />
     if(type === 'short-text') return <SmallTextBox onUpdate={(text) => onUpdate(text)} />
+    if(type === 'page-logo') return <PageLogoUpload onUpdate={(tempURL) => onUpdate(tempURL)}/>
+    if(type === 'socials') return <SocialSelector onUpdate />
 
 }
 
 export default function BlockCustomiser ({blockType, onConfirmation}) {
+    if(!blockType || !fields[blockType]) return;
+
     const [data, setData] = useState({type: blockType, data: {}, options:{}});
 
     const [error, setError] = useState('');

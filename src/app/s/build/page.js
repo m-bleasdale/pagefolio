@@ -1,6 +1,6 @@
 'use client'; //Dev only disable later
 
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect, createContext } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/navigation';
 import { useWindowSize } from 'react-use';
@@ -32,6 +32,8 @@ const temp_global = {
     shadowsEnabled: false    
 }
 
+export const PageInformationContext = createContext();
+
 export default function Build() {
     const { user, error, isLoading } = useUser();
 
@@ -62,10 +64,10 @@ export default function Build() {
             }
 
             if(error) console.error(error);
-            else return data;
+            else SetPageID(data);
         }
 
-        SetPageID(getPageID());
+        getPageID();
 
     }, [isLoading]);
 
@@ -82,6 +84,7 @@ export default function Build() {
     if(isLoading) return <Loading />
 
     return(
+        <PageInformationContext.Provider value={{pageID: PageID}}>
         <div className={styles.Page}>
             <Header />
             <div className={styles.Main}>
@@ -90,5 +93,6 @@ export default function Build() {
                 <BlockSelector onAddBlock={(newBlock) => SetBlocks(prevBlocks => [...prevBlocks, newBlock])}/>
             </div>
         </div>
+        </PageInformationContext.Provider>
     );
 };

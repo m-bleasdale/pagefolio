@@ -6,6 +6,7 @@
 .TitleContainer svg {
     align-self: self-end;
     color: var(--foreground);
+    transition: all 0.25s ease;
 }
 
 .TitleContainer svg:hover {
@@ -120,6 +121,7 @@
     border: 1px solid var(--primary);
 }
 
+
 .SmallTextBox {
     font-size: 1rem;
     padding: 10px 10px;
@@ -139,4 +141,193 @@
 .SmallTextBox:hover {
     outline: none;
     border: 1px solid var(--primary);
+}
+
+.SocialLinksContainer {
+    margin: 0;
+}
+
+.SocialLinksContainer button {
+    font-family: inherit;
+}
+
+.SocialLinksContainer .AddButton {
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    border: none;
+    background-color: var(--background-darker);
+}
+
+.SocialLinksContainer .AddButton:hover{
+    background-color: var(--background-darker-accent);
+}
+
+.SocialLinksContainer .PlatformMenu {
+    border: 1px solid var(--background-darker);
+    background-color: var(--background);
+    border-radius: 8px;
+    position: absolute;
+    margin-top: -20px;
+    box-shadow: 0 10px 15px -3px #0000001a;
+    padding: 8px 10px;
+    width: 262px;
+}
+
+.SocialLinksContainer #URLEditor {
+    margin-top: -35px;
+}
+
+
+.SocialLinksContainer .PlatformMenuTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.SocialLinksContainer .DropdownContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 8px;
+}
+
+.SocialLinksContainer .DropdownItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border: none;
+    background: none;
+    cursor: pointer;  
+    width: 80px;
+}
+
+.SocialLinksContainer .DropdownItem:hover {
+    background-color: var(--background-accent);
+}
+
+.SocialLinksContainer .PlatformIcon {
+    width: 32px;
+    height: 32px;
+}
+
+.SocialLinksContainer .URLEditor {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.SocialLinksContainer .URLEditor input {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+    width: 90%;
+    border: 1px solid var(--foreground-light);
+    border-radius: 8px;
+    font-family: 'Montserrat';
+}
+
+.SocialLinksContainer .URLEditor input:active, .SocialLinksContainer .URLEditor input:focus {
+    outline: none;
+    border: 1px solid var(--primary);
+    background-color: var(--background-accent);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}
+
+.SocialLinksContainer .URLEditor input:hover {
+    outline: none;
+    border: 1px solid var(--primary);
+}
+
+.SocialLinksContainer .URLEditorButtonContainer button{
+    font-size: 0.9rem;
+    font-family: inherit;
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+
+.SocialLinksContainer .URLEditorButtonContainer button:hover{
+    background-color: var(--primary-darker);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}
+
+.SocialLinksContainer .LinkedList {
+    margin-top: 20px;
+}
+
+.SocialLinksContainer .LinkedItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.SocialLinksContainer .LinkedItem input {
+    font-size: 0.9rem;
+    padding: 4px 5px;
+    border: 1px solid var(--foreground-light);
+    border-radius: 8px;
+    font-family: 'Montserrat';
+}
+
+.SocialLinksContainer .LinkedItem input:focus {
+    outline: none;
+    border: 1px solid var(--primary);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}
+
+.SocialLinksContainer .SaveButton {
+    font-size: 0.9rem;
+    font-family: inherit;
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.SocialLinksContainer .SaveButton:hover {
+    background-color: var(--primary-darker);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}
+
+.SocialLinksContainer .SocialEditButton {
+    height: 28px;
+    width: 28px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.SocialLinksContainer .SocialEditButton:hover {
+    color: var(--primary);
+}
+
+.SocialLinksContainer .RemoveButton {
+    color: var(--foreground);
+    transition: all 0.25s ease;
+    width: 22px;
+    height: 22px;
+}
+
+.SocialLinksContainer .RemoveButton#SocialEdit {
+    color: var(--error);
+    width: 28px;
+    height: 28px;
+}
+
+.SocialLinksContainer .RemoveButton:hover {
+    color: var(--error);
+    cursor: pointer;
 }

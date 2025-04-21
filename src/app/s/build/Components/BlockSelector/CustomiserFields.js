@@ -15,7 +15,7 @@ const fields = {
             {
                 fieldName: 'LogoSource',
                 displayName: 'Page Logo',
-                type: 'image'
+                type: 'page-logo'
             },
             {
                 fieldName: 'Socials',
