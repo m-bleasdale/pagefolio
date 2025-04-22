@@ -1,18 +1,22 @@
 .Container {
     grid-column-start: 2;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 75% 25%;
     padding-top: 20px;
     padding-bottom: 20px;
+    justify-content: space-between;
 }
 
 .Main {
     display: flex;
     flex-direction: row;
-    width: 85%;
     align-items: center;
     gap: 20px;
+}
+
+.SocialContainer {
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .TitleAndLogo {

@@ -37,7 +37,7 @@ const fields = {
             },
             {
                 fieldName: 'socials_variant',
-                displayName: 'Style of Social Media Icons',
+                displayName: 'Social Media Icon Style',
                 type: 'options',
                 required: true,
                 options: [

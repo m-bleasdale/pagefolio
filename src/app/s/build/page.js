@@ -74,7 +74,7 @@ export default function Build() {
     //Display error message if trying to use on mobile
     const { width } = useWindowSize();
     useEffect(() => {
-        if(width < 1000) SetDisplayMobile(true);
+        if(width < 1375) SetDisplayMobile(true);
         else SetDisplayMobile(false)
     }, [width]);
 

@@ -13,6 +13,13 @@
     min-height: 100vh;
 }
 
+@media (max-width: 1670px) {
+    .Container{
+        width: 250px;
+    }
+}
+
+
 .Container h1 {
     font-size: 1.5rem;
     font-weight: 400;

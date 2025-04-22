@@ -38,7 +38,9 @@ export default function Header ({data, options, global}) {
                     </div>
                     <SubTitle global={global}>{data.SubTitleText}</SubTitle>
                 </div>
-                <Socials data={data.Socials} style={{variant: options.socials_variant}} global={global}/>
+                <div className={LayoutStyles.SocialContainer}>
+                    <Socials data={data.Socials} style={{variant: options.socials_variant}} global={global}/>
+                </div>
             </div>
         </div>
     )

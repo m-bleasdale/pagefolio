@@ -326,3 +326,51 @@
     color: var(--error);
     cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+@media (max-width: 1670px) {
+    .TitleContainer {
+        grid-template-columns: 214px 32px;
+    }
+
+    .HeadingContainer{
+        width: 240px;
+    }
+
+    .HeadingContainer h2 {
+        width: 240px;
+    }
+    
+    .CustomiserContainer {
+        width: 240px;
+    }
+
+    .SocialLinksContainer .PlatformMenu {
+        width: 240px;
+    }
+
+    .SocialLinksContainer .DropdownItem {
+        width: 72px;
+    }
+
+    .SocialLinksContainer .LinkedItem {
+        gap: 5px;
+    }    
+
+    .SocialLinksContainer .LinkedItem input {
+        width: 80%;
+    }
+
+    .SocialLinksContainer .PlatformIcon {
+        width: 28px;
+        height: 28px;
+    }
+    
+}

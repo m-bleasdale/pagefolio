@@ -99,3 +99,36 @@
 .BlockContainer p {
     font-size: 0.92rem;
 }
+
+
+@media (max-width: 1670px) {
+    .Container{
+        width: 275px;
+    }
+
+    .Container h1 {
+        width: 240px;
+    }
+    
+    .Info {
+        width: 240px;
+    }
+    
+    .Blocks {
+        width: 240px;
+    }
+
+    .GroupContainer h2 {
+        width: 240px;
+    }
+    
+    .Group{
+        width: 240px;
+    }
+
+    .BlockContainer {
+        width: 80px;
+        height: 80px;
+    }
+    
+}
