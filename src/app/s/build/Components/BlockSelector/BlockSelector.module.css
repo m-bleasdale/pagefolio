@@ -8,6 +8,12 @@
 
     overflow-y: auto;
     scrollbar-gutter: stable;
+    
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 340px;
+    height: calc(100vh - 70px);
 }
 
 .Container h1 {

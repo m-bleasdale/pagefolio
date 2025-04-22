@@ -2,6 +2,9 @@
     display: grid;
     grid-template-columns: 400px 1fr 400px;
     border-bottom: 1px solid var(--background-darker);
+    position: fixed;
+    width: 100vw;
+    height: 70px;
 }
 
 .Left {

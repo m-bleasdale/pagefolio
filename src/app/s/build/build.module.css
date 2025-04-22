@@ -1,12 +1,11 @@
 .Page {
-    display: grid;
-    grid-template-rows: 70px 1fr;
-    height: 100svh;
+    min-height: 100svh;
     overflow: hidden;
 }
 
-.Main {
-    display: grid;
-    grid-template-columns: 340px 1fr 340px;
-    min-height: 100%;
+.BuilderContainer {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    top: 70px;
 }

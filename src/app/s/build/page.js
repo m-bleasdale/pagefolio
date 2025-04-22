@@ -87,11 +87,11 @@ export default function Build() {
         <PageInformationContext.Provider value={{pageID: PageID}}>
         <div className={styles.Page}>
             <Header />
-            <div className={styles.Main}>
-                <GlobalOptions />
-                <div><Builder blocks={Blocks} global={temp_global}/></div>
-                <BlockSelector onAddBlock={(newBlock) => SetBlocks(prevBlocks => [...prevBlocks, newBlock])}/>
+            <div className={styles.BuilderContainer}>
+                <Builder blocks={Blocks} global={temp_global}/>
             </div>
+            <GlobalOptions />
+            <BlockSelector onAddBlock={(newBlock) => SetBlocks(prevBlocks => [...prevBlocks, newBlock])}/>
         </div>
         </PageInformationContext.Provider>
     );
