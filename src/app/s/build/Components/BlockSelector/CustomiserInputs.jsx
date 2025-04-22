@@ -1,4 +1,4 @@
-import { React, useState, useContext } from 'react';
+import { React, useState, useContext, useEffect } from 'react';
 
 import { createClient } from '@/utils/supabase/client';
 import { PageInformationContext } from '../../page';
@@ -113,11 +113,19 @@ function PageLogoUpload({onUpdate}) {
     )
 }
 
-function SocialSelector (){
+function SocialSelector ({onUpdate}){
     const [linkedSocials, setLinkedSocials] = useState([]);
     const [showOptions, setShowOptions] = useState(false);
     const [selectedPlatform, setSelectedPlatform] = useState(null);
     const [tempUrl, setTempUrl] = useState('');
+
+    useEffect(() => {
+        let SocialLinks = [];
+        for(const index in linkedSocials){
+            SocialLinks.push({platform: linkedSocials[index].platform.name, link: linkedSocials[index].link});
+        }
+        onUpdate(SocialLinks);
+    }, [linkedSocials])
 
     const handleAddSocial = () => {
         if (!tempUrl.trim()) return;
@@ -174,7 +182,7 @@ function SocialSelector (){
                 </div>
             )}
 
-            {(!showOptions && linkedSocials.length < 5) && (
+            {(!showOptions && !selectedPlatform && linkedSocials.length < 5) && (
                 <button className={styles.AddButton} onClick={() => setShowOptions(!showOptions)}>
                     Add Social Media
                 </button>
@@ -207,7 +215,6 @@ function SocialSelector (){
             <div className={styles.LinkedList}>
                 {linkedSocials.map((item, index) => (
                 <div key={index} className={styles.LinkedItem}>
-                                        {console.log(item)}
                     <img src={item.platform.logo} alt={item.platform.name} className={styles.PlatformIcon} />
                     <input
                     type="url"

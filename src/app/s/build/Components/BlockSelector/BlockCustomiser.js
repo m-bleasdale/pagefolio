@@ -10,7 +10,7 @@ function Input ({onUpdate, type, options}) {
     if(type === 'options' && options) return <OptionSelector options={options} onUpdate={(selectedOption) => onUpdate(selectedOption)} />
     if(type === 'short-text') return <SmallTextBox onUpdate={(text) => onUpdate(text)} />
     if(type === 'page-logo') return <PageLogoUpload onUpdate={(tempURL) => onUpdate(tempURL)}/>
-    if(type === 'socials') return <SocialSelector onUpdate />
+    if(type === 'socials') return <SocialSelector onUpdate={(newSocialList) => onUpdate(newSocialList)} />
 
 }
 

@@ -169,17 +169,12 @@
     border: 1px solid var(--background-darker);
     background-color: var(--background);
     border-radius: 8px;
-    position: absolute;
-    margin-top: -20px;
+    position: relative;
+    display: inline-block;  
     box-shadow: 0 10px 15px -3px #0000001a;
     padding: 8px 10px;
     width: 262px;
 }
-
-.SocialLinksContainer #URLEditor {
-    margin-top: -35px;
-}
-
 
 .SocialLinksContainer .PlatformMenuTop {
     display: flex;
