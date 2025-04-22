@@ -78,8 +78,6 @@ export default function Build() {
         else SetDisplayMobile(false)
     }, [width]);
 
-
-
     if(displayMobile) return <NoMobile /> 
     if(isLoading) return <Loading />
 
@@ -87,7 +85,10 @@ export default function Build() {
         <PageInformationContext.Provider value={{pageID: PageID}}>
         <div className={styles.Page}>
             <Header />
-            <div className={styles.BuilderContainer}>
+            <div 
+                className={styles.BuilderContainer}
+                style={{backgroundColor: temp_global.backgroundColor}}
+            >
                 <Builder blocks={Blocks} global={temp_global}/>
             </div>
             <GlobalOptions />

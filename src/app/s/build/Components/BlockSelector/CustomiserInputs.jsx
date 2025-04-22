@@ -33,6 +33,53 @@ function OptionSelector({onUpdate, options}) {
 
 }
 
+function TextAlign({onUpdate}) {
+    const [selectedRadioOption, setSelectedRadioOption] = useState('');
+
+    const options = [
+        {
+            name: "left",
+            icon: 
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+            </svg>
+        },
+        {
+            name: "center",
+            icon: 
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        },
+        {
+            name: "right",
+            icon: 
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
+            </svg>
+        }
+    ]
+
+    return (
+        <div className={styles.TextAlign}>
+            {options.map((option, index) => (
+                <div 
+                    key={index} 
+                    className={styles.TextAlignBox} 
+                    id={styles[`${selectedRadioOption === option.name ? 'selected' : ''}`]}
+                    onClick={(e) => {
+                        onUpdate(option.name);
+                        setSelectedRadioOption(option.name);
+                    }}
+                >
+                    {option.icon}
+                </div>
+            ))}
+        </div>
+    )
+
+}
+
 function SmallTextBox({onUpdate}) {
     return (
         <input className={styles.SmallTextBox}
@@ -43,11 +90,13 @@ function SmallTextBox({onUpdate}) {
     )
 }
 
-function SmallTextArea({onUpdate}) {
-
-}
-
 function LargeTextArea({onUpdate}) {
+    return (
+        <textarea className={styles.LargeTextArea}
+        placeholder="Please type something"
+        onChange={(e) => {onUpdate(e.target.value)}}
+        />
+    )
 
 }
 
@@ -244,4 +293,4 @@ function SocialSelector ({onUpdate}){
 
 }
 
-export { OptionSelector, SmallTextBox, SmallTextArea, LargeTextArea, PageLogoUpload, SocialSelector }
+export { OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector }

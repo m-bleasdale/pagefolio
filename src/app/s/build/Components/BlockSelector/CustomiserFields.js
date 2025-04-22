@@ -49,6 +49,40 @@ const fields = {
                 ]
             }
         ]
+    },
+    'About': {
+        data: [
+            {
+                fieldName: 'TitleText',
+                displayName: 'Title',
+                type: 'short-text'
+            },
+            {
+                fieldName: 'BodyText',
+                displayName: 'Body Text',
+                type: 'long-text',
+                required: true
+            }
+        ],
+        options: [
+            {
+                fieldName: 'align',
+                displayName: 'Text Align',
+                type: 'text-align'
+            },
+            {
+                fieldName: 'highlighted',
+                displayName: 'Display Style',
+                type: 'options',
+                required: true,
+                options: [
+                    { displayName: 'Normal', optionName: 'false' },
+                    { displayName: 'Highlighted', optionName: 'primary' },
+                    { displayName: 'Highlighted (Minimal)', optionName: 'minimal' }
+                ]
+
+            }
+        ]
     }
 }
 

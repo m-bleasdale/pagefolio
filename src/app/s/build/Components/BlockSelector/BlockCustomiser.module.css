@@ -122,6 +122,42 @@
 }
 
 
+
+
+.TextAlign {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--background-darker);
+    width: 168px;
+    border-radius: 8px;
+    background-color: var(--background);
+}
+
+.TextAlignBox {
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    border-radius: 8px;
+}
+
+.TextAlignBox svg {
+    height: 32px;
+    width: 32px;
+    color: var(--foreground);
+    transition: all 0.25s ease-in-out;
+}
+
+.TextAlignBox#selected {
+    background-color: var(--primary);
+}
+
+.TextAlignBox#selected svg {
+    color: var(--background);
+}
+
+
+
+
 .SmallTextBox {
     font-size: 1rem;
     padding: 10px 10px;
@@ -142,6 +178,35 @@
     outline: none;
     border: 1px solid var(--primary);
 }
+
+
+
+
+.LargeTextArea {
+    font-size: 1rem;
+    padding: 10px 10px;
+    width: 90%;
+    border: 1px solid var(--foreground-light);
+    border-radius: 8px;
+    font-family: 'Montserrat';
+    resize: vertical;
+    height: 140px;
+}
+
+.LargeTextArea:active, .LargeTextArea:focus {
+    outline: none;
+    border: 1px solid var(--primary);
+    background-color: var(--background-accent);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}
+
+.LargeTextArea:hover {
+    outline: none;
+    border: 1px solid var(--primary);
+}
+
+
+
 
 .SocialLinksContainer {
     margin: 0;

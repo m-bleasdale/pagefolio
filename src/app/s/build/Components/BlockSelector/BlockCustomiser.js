@@ -3,14 +3,16 @@ import { React, useState } from 'react';
 import styles from './BlockCustomiser.module.css';
 
 import fields from './CustomiserFields';
-import {OptionSelector, SmallTextBox, SmallTextArea, LargeTextArea, PageLogoUpload, SocialSelector} from './CustomiserInputs';
+import {OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector} from './CustomiserInputs';
 
 function Input ({onUpdate, type, options}) {
 
     if(type === 'options' && options) return <OptionSelector options={options} onUpdate={(selectedOption) => onUpdate(selectedOption)} />
+    if(type === 'text-align') return <TextAlign onUpdate={(selectedOption) => onUpdate(selectedOption)} />
     if(type === 'short-text') return <SmallTextBox onUpdate={(text) => onUpdate(text)} />
     if(type === 'page-logo') return <PageLogoUpload onUpdate={(tempURL) => onUpdate(tempURL)}/>
     if(type === 'socials') return <SocialSelector onUpdate={(newSocialList) => onUpdate(newSocialList)} />
+    if(type === 'long-text') return <LargeTextArea onUpdate={(text) => onUpdate(text)} />
 
 }
 
