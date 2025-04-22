@@ -27,6 +27,7 @@ export default function Socials ({data, style, global}) {
     return(
         <div className={SocialsStyles.SocialsContainer}>
             {data.map((element) => {
+                if(!element.platform || !platforms[element.platform]) return;
                 return(
                     <div className={SocialsStyles.SocialLink} key={element.platform}>
                         <img 
