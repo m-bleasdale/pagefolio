@@ -6,7 +6,8 @@ export default function Socials ({data, style, global}) {
 
     const color = global.primary.slice(-6);
     
-    const platforms = {
+    //Going for Original Circle (as original) and Filled circle (filled)
+    /*const platforms = {
         'Instagram': {
             'original': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png',
             'original_circle': 'https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-instagram-new-circle-512.png',
@@ -20,6 +21,20 @@ export default function Socials ({data, style, global}) {
             'filled': `https://img.icons8.com/?size=100&id=84888&format=png&color=${color}`,
             'filled_circle': `https://img.icons8.com/?size=100&id=62925&format=png&color=${color}`,
             'outline': `https://img.icons8.com/?size=100&id=2EqeH19eMd3a&format=png&color=${color}`
+        }
+    }*/
+
+    const platforms = {
+        'Instagram': {
+            'original': 'https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000',
+            'filled': `https://img.icons8.com/?size=100&id=dz63urxyxSdO&format=png&color=${color}`,
+            'outline': `https://img.icons8.com/?size=100&id=32320&format=png&color=${color}`
+
+        },
+        'LinkedIn': {
+            'original': 'https://img.icons8.com/?size=100&id=qNUNvR9aEWql&format=png&color=000000',
+            'filled': `https://img.icons8.com/?size=100&id=62925&format=png&color=${color}`,
+            'outline': `https://img.icons8.com/?size=100&id=16166&format=png&color=${color}`
         }
     }
     

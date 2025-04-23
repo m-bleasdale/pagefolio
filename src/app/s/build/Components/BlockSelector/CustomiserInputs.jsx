@@ -1,5 +1,6 @@
 import { React, useState, useContext, useEffect } from 'react';
 
+
 import { createClient } from '@/utils/supabase/client';
 import { PageInformationContext } from '../../page';
 
@@ -16,6 +17,9 @@ function OptionSelector({onUpdate, options}) {
         <div className={styles.OptionSelector}>
             {options.map((option, index) => (
                 <label key={index} className={styles.RadioBox} id={styles[`${selectedRadioOption === option.optionName ? 'selected' : ''}`]}>
+                    {(option.icon &&
+                        <img src={option.icon} />
+                    )}
                     <input
                     type="radio"
                     value={option.optionName}

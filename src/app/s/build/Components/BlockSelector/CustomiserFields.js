@@ -31,8 +31,8 @@ const fields = {
                 required: true,
                 options: [
                     { displayName: 'Horizontal', optionName: 'Horizontal' },
-                    { displayName: 'Vertical Discrete', optionName: 'Vertical_Discrete' },
-                    { displayName: 'Vertical Logo Focus', optionName: 'Vertical_Logo_Focus' },
+                    { displayName: 'Discrete', optionName: 'Vertical_Discrete' },
+                    { displayName: 'Focus', optionName: 'Vertical_Logo_Focus' }
                 ]
             },
             {
@@ -41,11 +41,9 @@ const fields = {
                 type: 'options',
                 required: true,
                 options: [
-                    { displayName: 'Original', optionName: 'original' },
-                    { displayName: 'Circle', optionName: 'original_circle' },
-                    { displayName: 'Filled', optionName: 'filled' },
-                    { displayName: 'Filled Circle', optionName: 'filled_circle' },
-                    { displayName: 'Outline', optionName: 'outline' },
+                    { displayName: 'Original', optionName: 'original', icon: '/build/PageFolioSocialOriginal.png' },
+                    { displayName: 'Filled', optionName: 'filled', icon: '/build/PageFolioSocialFilled.png' },
+                    { displayName: 'Outline', optionName: 'outline', icon: '/build/PageFolioSocialFilledCircle.png' }
                 ]
             }
         ]
