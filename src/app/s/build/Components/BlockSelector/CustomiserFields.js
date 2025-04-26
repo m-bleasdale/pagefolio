@@ -66,7 +66,8 @@ const fields = {
             {
                 fieldName: 'align',
                 displayName: 'Text Align',
-                type: 'text-align'
+                type: 'text-align',
+                required: true
             },
             {
                 fieldName: 'highlighted',
