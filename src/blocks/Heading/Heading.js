@@ -4,6 +4,8 @@ import { React } from 'react';
 import HeadingStyles from './Heading.module.css';
 
 export default function Heading({children, align, global}){
+    if(!children) return;
+
     return(
         <div 
         className={HeadingStyles.Container}

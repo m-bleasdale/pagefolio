@@ -4,6 +4,8 @@ import { React } from 'react';
 import ParagraphStyles from './Paragraph.module.css';
 
 export default function Paragraph({children, align, global}) {
+    if(!children) return;
+
     return(
         <div 
         className={ParagraphStyles.Container}
