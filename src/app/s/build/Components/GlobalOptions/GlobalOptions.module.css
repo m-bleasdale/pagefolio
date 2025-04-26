@@ -33,3 +33,33 @@
     color: var(--foreground-light);
     padding: 10px 0px;
 }
+
+.OptionsContainer {
+    width: 300px;
+}
+
+.OptionGroup {
+    margin-top: 10px;
+}
+
+.OptionsContainer h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.ColourSelectorContainer {
+    margin-top: 20px;
+}
+
+.ColourFieldsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Error, .required {
+    color: var(--error);
+    font-weight: 500;
+    margin-top: 10px;
+}

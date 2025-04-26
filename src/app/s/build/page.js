@@ -43,6 +43,20 @@ export default function Build() {
     const [displayMobile, SetDisplayMobile] = useState(false);
 
     const [Blocks, SetBlocks] = useState([]);
+    //Default values
+    const [Options, SetOptions] = useState({
+        backgroundColor: '#ffffff',
+        altBackgroundColor: '#ffffff',
+        foreground: '#000000', 
+        foreground_onAlt: '#000000',
+        foreground_light: '#4D4D4D',
+        foreground_light_onAlt: '#4D4D4D',
+        primary: '#3686F7',
+        foreground_onPrimary: '#ffffff',
+        border: '1px solid #dddddd',
+        shadowsEnabled: false,
+        theme: 'Monotone'
+    })
 
     //Get ID of page to update
     //And redirect not logged in user
@@ -87,11 +101,11 @@ export default function Build() {
             <Header />
             <div 
                 className={styles.BuilderContainer}
-                style={{backgroundColor: temp_global.backgroundColor}}
+                style={{backgroundColor: Options.backgroundColor}}
             >
-                <Builder blocks={Blocks} global={temp_global}/>
+                <Builder blocks={Blocks} global={Options}/>
             </div>
-            <GlobalOptions />
+            <GlobalOptions initialOptions={Options} onUpdate={(newOptions) => SetOptions(newOptions)}/>
             <BlockSelector onAddBlock={(newBlock) => SetBlocks(prevBlocks => [...prevBlocks, newBlock])}/>
         </div>
         </PageInformationContext.Provider>

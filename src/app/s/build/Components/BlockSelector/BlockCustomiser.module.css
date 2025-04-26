@@ -406,7 +406,19 @@
 
 
 
+.ColourSelector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
 
+.ColourSelector input {
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    height: 32px;
+}
 
 
 

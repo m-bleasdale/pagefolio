@@ -1,5 +1,6 @@
-import { React, useState, useContext, useEffect } from 'react';
+import { React, useState, useContext, useEffect, useMemo } from 'react';
 
+import { debounce } from 'lodash';
 
 import { createClient } from '@/utils/supabase/client';
 import { PageInformationContext } from '../../page';
@@ -8,10 +9,14 @@ import platforms from './SocialMediaPlatforms';
 
 import styles from './BlockCustomiser.module.css';
 
-function OptionSelector({onUpdate, options}) {
+function OptionSelector({onUpdate, options, initialValue}) {
     const [selectedRadioOption, setSelectedRadioOption] = useState('');
 
     if(!options) return;
+
+    useEffect(() => {
+        if(initialValue) setSelectedRadioOption(initialValue);
+    }, []);
 
     return (
         <div className={styles.OptionSelector}>
@@ -293,8 +298,44 @@ function SocialSelector ({onUpdate}){
             </div>
         </div>
       );
-    
-
 }
 
-export { OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector }
+function ColourSelector({ colourName, onUpdate }) {    
+    const [selectedColour, setSelectedColour] = useState('#000000');
+
+    const debouncedUpdate = useMemo(() => debounce(onUpdate, 150), [onUpdate]);
+
+    useEffect(() => {
+        if(colourName === "Primary Colour") setSelectedColour('#3686F7');
+        if(colourName === "Background") setSelectedColour('#ffffff');
+        if(colourName === "Alternative Background") setSelectedColour('#eeeeee')
+        return;
+    }, []);
+
+    useEffect(() => {
+        // Cleanup on unmount to avoid memory leaks
+        return () => {
+            debouncedUpdate.cancel();
+        };
+    }, [debouncedUpdate]);
+
+      
+    const handleChange = (e) => {
+        const newColour = e.target.value;
+        setSelectedColour(newColour);
+        debouncedUpdate(newColour);
+    };
+
+    return (
+        <div className={styles.ColourSelector}>
+            <p>{colourName}</p>
+            <input
+                type="color"
+                value={selectedColour}
+                onChange={handleChange}
+            />
+        </div>
+    );
+}
+
+export { OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector, ColourSelector }
