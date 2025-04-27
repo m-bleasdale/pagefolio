@@ -3,7 +3,7 @@
 import { React } from 'react';
 import HeadingStyles from './Heading.module.css';
 
-export default function Heading({children, align, global}){
+export default function Heading({children, align, colour}){
     if(!children) return;
 
     return(
@@ -16,7 +16,7 @@ export default function Heading({children, align, global}){
             <p 
             className={HeadingStyles.Text}
             style={{
-                color: global.foreground
+                color: colour
             }}
             >
                 {children}

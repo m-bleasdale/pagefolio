@@ -3,7 +3,7 @@
 import { React } from 'react';
 import ParagraphStyles from './Paragraph.module.css';
 
-export default function Paragraph({children, align, global}) {
+export default function Paragraph({children, align, colour}) {
     if(!children) return;
 
     return(
@@ -16,7 +16,7 @@ export default function Paragraph({children, align, global}) {
             <p 
             className={ParagraphStyles.Text}
             style={{
-                color: global.foreground
+                color: colour
             }}
             >
                 {children}

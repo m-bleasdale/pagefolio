@@ -29,8 +29,8 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
             setColourFields([
                 { displayName: 'Foreground', colourName: 'foreground'},
                 { displayName: 'Background', colourName: 'backgroundColor' },
-                { displayName: 'Alternative Background', colourName: 'altBackgroundColor' },
-                { displayName: 'Primary Colour', colourName: 'primary' }
+                { displayName: 'Primary Colour', colourName: 'primary' },
+                { displayName: 'Alternative Background', colourName: 'altBackgroundColor' }
             ])
         }
     }, [theme]);
@@ -85,6 +85,11 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
                 const isDark = isColourDark(value);
                 newOptions.foreground_onPrimary = isDark ? '#FFFFFF' : prev.foreground;
             }
+            if (colourName === 'altBackgroundColor') {
+                const isDark = isColourDark(value);
+                newOptions.foreground_onAlt = isDark ? '#FFFFFF' : prev.foreground;
+                newOptions.foreground_light_onAlt = lightenColour(newOptions.foreground_onAlt, 0.3);
+            }
 
             return newOptions;
         });
@@ -113,7 +118,8 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
                             {colourFields.map((field, index) => (
                                 <ColourSelector 
                                     key={index} 
-                                    colourName={field.displayName} 
+                                    defaultColours={initialOptions}
+                                    colour={field}
                                     onUpdate={(newColour) => {handleColourUpdate(field.colourName, newColour)}}
                                 />
                             ))}

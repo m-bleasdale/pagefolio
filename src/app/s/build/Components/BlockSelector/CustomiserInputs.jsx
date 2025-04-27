@@ -300,16 +300,13 @@ function SocialSelector ({onUpdate}){
       );
 }
 
-function ColourSelector({ colourName, onUpdate }) {    
+function ColourSelector({ defaultColours, colour, onUpdate }) {    
     const [selectedColour, setSelectedColour] = useState('#000000');
 
     const debouncedUpdate = useMemo(() => debounce(onUpdate, 150), [onUpdate]);
 
     useEffect(() => {
-        if(colourName === "Primary Colour") setSelectedColour('#3686F7');
-        if(colourName === "Background") setSelectedColour('#ffffff');
-        if(colourName === "Alternative Background") setSelectedColour('#eeeeee')
-        return;
+        if(defaultColours[colour.colourName]) setSelectedColour(defaultColours[colour.colourName])
     }, []);
 
     useEffect(() => {
@@ -328,7 +325,7 @@ function ColourSelector({ colourName, onUpdate }) {
 
     return (
         <div className={styles.ColourSelector}>
-            <p>{colourName}</p>
+            <p>{colour.displayName}</p>
             <input
                 type="color"
                 value={selectedColour}
