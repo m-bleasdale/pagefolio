@@ -45,13 +45,8 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
             const newOptions = {...prev, [colourName]: value };
 
             //Set alts to be normal values if monotone
-            if(theme === 'Monotone'){
-                if(colourName === 'backgroundColor'){
-                    newOptions.altBackgroundColor = value;
-                }
-                else if(colourName === 'foreground'){
-                    newOptions.foreground_onAlt = value;
-                }
+            if(theme === 'Monotone' && colourName === 'backgroundColor'){
+                newOptions.altBackgroundColor = value;
             }
 
             //Work out lighter version of given colour
@@ -85,7 +80,7 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
                 const isDark = isColourDark(value);
                 newOptions.foreground_onPrimary = isDark ? '#FFFFFF' : prev.foreground;
             }
-            if (colourName === 'altBackgroundColor') {
+            if (colourName === 'altBackgroundColor' || colourName === 'foreground') {
                 const isDark = isColourDark(value);
                 newOptions.foreground_onAlt = isDark ? '#FFFFFF' : prev.foreground;
                 newOptions.foreground_light_onAlt = lightenColour(newOptions.foreground_onAlt, 0.3);

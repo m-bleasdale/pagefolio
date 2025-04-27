@@ -413,11 +413,90 @@
     gap: 10px;
 }
 
-.ColourSelector input {
+.SelectedColourContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.ColourSampleContainer {
+    width: 45px;
+    height: 28px;
+    border: 1px solid var(--foreground-light);
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.ColourPickerContainer {
+    border: 1px solid var(--background-darker);
+    background-color: var(--background);
+    border-radius: 8px;
+    position: relative;
+    display: inline-block;  
+    box-shadow: 0 10px 15px -3px #0000001a;
+    padding: 8px 10px;
+}
+
+.ColourPickerContainer .MenuTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ColourPickerContainer .CloseButton {
+    color: var(--foreground);
+    transition: all 0.25s ease;
+    width: 22px;
+    height: 22px;
+}
+
+.ColourPickerContainer .CloseButton:hover {
+    color: var(--error);
+    cursor: pointer;
+}
+
+.ColourOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 8px 10px;
+}
+
+.ColourOptions .ColourOptionRow {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+
+.ColourOptions .ColourOption {
+    height: 23px;
+    width: 23px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.CustomColour{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 10px;
+}
+
+.CustomColour p {
+    font-size: 0.925rem;
+    color: var(--foreground-light);
+}
+
+.CustomColour input {
     background-color: #ffffff;
     border: none;
     cursor: pointer;
-    height: 32px;
+    height: 25px;
+    width: 32px;
 }
 
 

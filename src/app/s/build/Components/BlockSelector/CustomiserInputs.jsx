@@ -302,6 +302,7 @@ function SocialSelector ({onUpdate}){
 
 function ColourSelector({ defaultColours, colour, onUpdate }) {    
     const [selectedColour, setSelectedColour] = useState('#000000');
+    const [showColourPicker, setShowColourPicker] = useState(false);
 
     const debouncedUpdate = useMemo(() => debounce(onUpdate, 150), [onUpdate]);
 
@@ -317,20 +318,71 @@ function ColourSelector({ defaultColours, colour, onUpdate }) {
     }, [debouncedUpdate]);
 
       
-    const handleChange = (e) => {
-        const newColour = e.target.value;
+    function handleChange (newColour) {
         setSelectedColour(newColour);
         debouncedUpdate(newColour);
     };
 
+    const PresetOptions = [
+        ['#ffffff', '#f3f3f3', '#efefef', '#d9d9d9', '#999999', '#666666', '#000000'],
+        ['#dd7e6b', '#ea9999', '#f9cb9c', '#ffe599', '#b6d7a8', '#a4c2f4', '#b4a7d6'],
+        ['#cc4125', '#e06666', '#f6b26b', '#ffd966', '#93c47d', '#6d9eeb', '#8e7cc3'],
+        ['#a61c00', '#cc0000', '#e69138', '#f1c232', '#6aa84f', '#3c78d8', '#674ea7'],
+        ['#85200c', '#990000', '#b45f06', '#bf9000', '#38761d', '#1155cc', '#351c75'],
+    ]
+
     return (
         <div className={styles.ColourSelector}>
-            <p>{colour.displayName}</p>
-            <input
-                type="color"
-                value={selectedColour}
-                onChange={handleChange}
-            />
+            {!showColourPicker && (
+                <div className={styles.SelectedColourContainer}>
+                    <p>{colour.displayName}</p>
+                    <div 
+                        className={styles.ColourSampleContainer}
+                        style={{backgroundColor: selectedColour}}
+                        onClick={() => setShowColourPicker(true)}
+                    ></div>
+                </div>
+            )}
+
+            {showColourPicker && (
+                <div className={styles.ColourPickerContainer}>
+                    <div className={styles.MenuTop}>
+                        <p>{colour.displayName}</p>
+                        <svg className={styles.CloseButton} onClick={() => setShowColourPicker(false)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </div>
+                    <div className={styles.ColourOptions}>
+                        {PresetOptions.map((row, rowIndex) => (
+                            <div className={styles.ColourOptionRow} key={rowIndex}>
+                                {row.map((colourOption, index) => (
+                                    <div 
+                                        className={styles.ColourOption}
+                                        key={index}
+                                        onClick={() => {
+                                            handleChange(colourOption);
+                                            setShowColourPicker(false);
+                                        }}
+                                        style={{
+                                            backgroundColor: colourOption,
+                                            border: rowIndex === 0 && (index === 0 || index === 1) ? '1px solid #e6e6e6' : 'none',
+                                        }}
+                                    ></div>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
+                    <div className={styles.CustomColour}>
+                        <p>Custom</p>
+                        <input
+                            type="color"
+                            value={selectedColour}
+                            onChange={(e) => handleChange(e.target.value)}
+                        />
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 }
