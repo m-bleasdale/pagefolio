@@ -40,13 +40,6 @@
     border-radius: 14px;
 }
 
-.Content {
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
-    align-items: center;
-}
-
 .Image img{
     height: auto;
     width: 250px;

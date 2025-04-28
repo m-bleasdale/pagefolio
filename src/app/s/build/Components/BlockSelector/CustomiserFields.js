@@ -14,7 +14,7 @@ const fields = {
             },
             {
                 fieldName: 'LogoSource',
-                displayName: 'Page Logo',
+                displayName: 'Picture',
                 type: 'page-logo'
             },
             {

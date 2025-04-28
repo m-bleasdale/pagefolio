@@ -69,6 +69,7 @@ export default function BlockSelector({ onAddBlock }) {
 
     function handleConfirmation(data) {
         onAddBlock(data);
+        console.log(data);
         resetCustomiser();
     }
 

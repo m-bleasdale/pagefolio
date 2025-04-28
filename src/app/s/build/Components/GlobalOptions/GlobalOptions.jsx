@@ -23,7 +23,7 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
                 { displayName: 'Foreground', colourName: 'foreground' },
                 { displayName: 'Background', colourName: 'backgroundColor' },
                 { displayName: 'Primary Colour', colourName: 'primary' }
-            ])
+            ]);
         }
         else if (theme === 'Duotone'){
             setColourFields([
@@ -80,9 +80,27 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
                 const isDark = isColourDark(value);
                 newOptions.foreground_onPrimary = isDark ? '#FFFFFF' : prev.foreground;
             }
-            if (colourName === 'altBackgroundColor' || colourName === 'foreground') {
+
+            //ERROR: When changing foreground colour, onAlt becomes white
+            //ALSO: Consider if monotone is being used, isDark check must also be done on background
+            //and if the theme is monotone, foreground should be lightened if the colour is dark
+            //I've tried to make some fixes, CHECK AGAIN - NOT DONE YET
+            //
+            //Also another issue: when changing background colour to black, altForeground goes white
+            //When turning background back to white, altForeground stays white
+            if (colourName === 'altBackgroundColor') {
                 const isDark = isColourDark(value);
-                newOptions.foreground_onAlt = isDark ? '#FFFFFF' : prev.foreground;
+                newOptions.foreground_onAlt = isDark ? '#FFFFFF' : options.foreground;
+                newOptions.foreground_light_onAlt = lightenColour(newOptions.foreground_onAlt, 0.3);
+            }
+            if (colourName === 'foreground') {
+                const isDark = isColourDark(options.altBackgroundColor);
+                newOptions.foreground_onAlt = isDark ? '#FFFFFF' : value;
+                newOptions.foreground_light_onAlt = lightenColour(newOptions.foreground_onAlt, 0.3);
+            }
+            if (colourName === 'backgroundColor' && theme === 'Monotone') {
+                const isDark = isColourDark(value);
+                newOptions.foreground_onAlt = isDark ? '#FFFFFF' : options.foreground;
                 newOptions.foreground_light_onAlt = lightenColour(newOptions.foreground_onAlt, 0.3);
             }
 
