@@ -82,6 +82,42 @@ const fields = {
 
             }
         ]
+    },
+    'ButtonLink': {
+        data: [
+            {
+                fieldName: 'ButtonText',
+                displayName: 'Text',
+                type: 'short-text',
+                required: true
+            },
+            {
+                fieldName: 'Link',
+                displayName: 'Link',
+                type: 'short-text',
+                required: true
+            },
+            {
+                fieldName: 'IconSource',
+                displayName: 'Icon',
+                type: 'icon',
+            }
+        ],
+        options: [
+            {
+                fieldName: 'variant',
+                displayName: 'Button Variant',
+                type: 'options',
+                required: true,
+                options: [
+                    { displayName: 'Primary', optionName: 'primary' },
+                    { displayName: 'Minimal', optionName: 'minimal' },
+                    { displayName: 'Bare', optionName: 'bare' }
+                ]
+
+            }
+        ]
+
     }
 }
 

@@ -502,6 +502,106 @@
 
 
 
+.IconSelector {
+    margin: 0;
+}
+
+.IconSelector button {
+    font-family: inherit;
+}
+
+.IconSelector .AddButton {
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    border: none;
+    background-color: var(--background-darker);
+}
+
+.IconSelector .AddButton:hover{
+    background-color: var(--background-darker-accent);
+}
+
+.IconSelector .IconPreviewContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.IconSelector .IconSelectorMenu {
+    border: 1px solid var(--background-darker);
+    background-color: var(--background);
+    border-radius: 8px;
+    position: relative;
+    display: inline-block;  
+    box-shadow: 0 10px 15px -3px #0000001a;
+    padding: 8px 10px;
+    width: 262px;
+}
+
+.IconSelector .IconSelectorMenuTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.IconSelector .DropdownContent {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 8px;
+}
+
+.IconSelector .DropdownItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px 0;
+    border: none;
+    background: none;
+    cursor: pointer;  
+    width: 80px;
+}
+
+.IconSelector .DropdownItem:hover {
+    background-color: var(--background-accent);
+}
+
+.IconSelector .DropdownItem p{
+    font-size: 0.925rem;
+}
+
+.IconSelector .EditButton {
+    height: 28px;
+    width: 28px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.IconSelector .EditButton:hover {
+    color: var(--primary);
+}
+
+.IconSelector .CloseButton {
+    color: var(--foreground);
+    transition: all 0.25s ease;
+    width: 22px;
+    height: 22px;
+}
+
+.IconSelector .CloseButton:hover {
+    color: var(--error);
+    cursor: pointer;
+}
+
+
+
+
 @media (max-width: 1670px) {
     .TitleContainer {
         grid-template-columns: 214px 32px;

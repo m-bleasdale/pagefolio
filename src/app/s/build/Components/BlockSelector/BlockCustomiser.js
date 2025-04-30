@@ -3,7 +3,7 @@ import { React, useState } from 'react';
 import styles from './BlockCustomiser.module.css';
 
 import fields from './CustomiserFields';
-import {OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector} from './CustomiserInputs';
+import {OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector, IconSelector} from './CustomiserInputs';
 
 function Input ({onUpdate, type, options}) {
 
@@ -13,6 +13,7 @@ function Input ({onUpdate, type, options}) {
     if(type === 'page-logo') return <PageLogoUpload onUpdate={(tempURL) => onUpdate(tempURL)}/>
     if(type === 'socials') return <SocialSelector onUpdate={(newSocialList) => onUpdate(newSocialList)} />
     if(type === 'long-text') return <LargeTextArea onUpdate={(text) => onUpdate(text)} />
+    if(type === 'icon') return <IconSelector onUpdate={(iconName) => onUpdate(iconName)} />
 
 }
 

@@ -44,13 +44,19 @@ export default function Socials ({data, style, global}) {
             {data.map((element) => {
                 if(!element.platform || !platforms[element.platform]) return;
                 return(
-                    <div className={SocialsStyles.SocialLink} key={element.platform}>
+                    <a 
+                        className={SocialsStyles.SocialLink} 
+                        key={element.platform}
+                        href={element.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                    >
                         <img 
                             className={SocialsStyles.SocialLinkImage}
                             src={platforms[element.platform][style.variant]} 
                             alt={element.platform}
                         />
-                    </div>
+                    </a>
                 )
             })}
         </div>
