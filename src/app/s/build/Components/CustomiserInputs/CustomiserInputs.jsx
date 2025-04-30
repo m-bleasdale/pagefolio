@@ -8,7 +8,7 @@ import { PageInformationContext } from '../../page';
 import platforms from './SocialMediaPlatforms';
 import icons from '@/utils/Icons';
 
-import styles from './BlockCustomiser.module.css';
+import styles from './CustomiserInputs.module.css';
 
 function OptionSelector({onUpdate, options, initialValue}) {
     const [selectedRadioOption, setSelectedRadioOption] = useState('');
@@ -215,18 +215,18 @@ function SocialSelector ({onUpdate}){
     return (
         <div className={styles.SocialLinksContainer}>
             {showOptions && (
-                <div className={styles.PlatformMenu}>
-                    <div className={styles.PlatformMenuTop}>
+                <div className={styles.Menu}>
+                    <div className={styles.MenuTop}>
                         <p>Add Social Media</p>
-                        <svg className={styles.RemoveButton} onClick={() => setShowOptions(false)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                        <svg className={styles.CloseButton} onClick={() => setShowOptions(false)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </div>
-                    <div className={styles.DropdownContent}>
+                    <div className={styles.MenuContent}>
                         {platforms.map((platform) => (
                             <button
                                 key={platform.name}
-                                className={styles.DropdownItem}
+                                className={styles.MenuItem}
                                 onClick={() => {
                                     setSelectedPlatform(platform);
                                     setShowOptions(false);
@@ -248,10 +248,10 @@ function SocialSelector ({onUpdate}){
             )}
 
             {selectedPlatform && (
-                <div className={styles.PlatformMenu} id={styles.URLEditor}>
-                    <div className={styles.PlatformMenuTop}>
+                <div className={styles.Menu} id={styles.URLEditor}>
+                    <div className={styles.MenuTop}>
                         <p>Enter URL for {selectedPlatform.name}:</p>
-                        <svg className={styles.RemoveButton} onClick={() => setSelectedPlatform(null)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                        <svg className={styles.CloseButton} onClick={() => setSelectedPlatform(null)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </div>
@@ -285,11 +285,11 @@ function SocialSelector ({onUpdate}){
                     <button className={styles.SaveButton} onClick={() => handleToggleEdit(index)}>Save</button>
                     ) : (
                     <>
-                        <svg className={styles.SocialEditButton} onClick={() => handleToggleEdit(index)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor">
+                        <svg className={styles.EditButton} onClick={() => handleToggleEdit(index)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                         </svg>
 
-                        <svg className={styles.RemoveButton} id={styles.SocialEdit} onClick={() => handleRemove(index)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                        <svg className={styles.CloseButton} id={styles.SocialEdit} onClick={() => handleRemove(index)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </>
@@ -415,16 +415,16 @@ function IconSelector({onUpdate}) {
             )}
 
             {showIconPicker && (
-                <div className={styles.IconSelectorMenu}>
-                    <div className={styles.IconSelectorMenuTop}>
+                <div className={styles.Menu}>
+                    <div className={styles.MenuTop}>
                         <p>Select an icon</p>
                         <svg className={styles.CloseButton} onClick={() => setShowIconPicker(false)} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                         </svg>
                     </div>
-                    <div className={styles.DropdownContent}>
+                    <div className={styles.MenuContent}>
                         <button
-                            className={styles.DropdownItem}
+                            className={styles.MenuItem}
                             onClick={() => {
                                 setSelectedIcon(false);
                                 setShowIconPicker(false);
@@ -436,7 +436,7 @@ function IconSelector({onUpdate}) {
                         {icons.map((icon) => (
                             <button
                                 key={icon.name}
-                                className={styles.DropdownItem}
+                                className={styles.MenuItem}
                                 onClick={() => {
                                     setSelectedIcon(icon);
                                     setShowIconPicker(false);

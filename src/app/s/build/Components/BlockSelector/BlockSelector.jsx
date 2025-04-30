@@ -1,9 +1,9 @@
 import { React, useState } from 'react';
 
 import styles from './BlockSelector.module.css';
-import customiserStyles from './BlockCustomiser.module.css';
+import customiserStyles from './BlockCustomiser/BlockCustomiser.module.css';
 
-import BlockCustomiser from './BlockCustomiser';
+import BlockCustomiser from './BlockCustomiser/BlockCustomiser';
 
 const blockGroups = [
     {

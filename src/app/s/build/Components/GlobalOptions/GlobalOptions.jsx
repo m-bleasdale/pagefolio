@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import { debounce } from 'lodash';
 
-import { OptionSelector, ColourSelector } from '../BlockSelector/CustomiserInputs';
+import { OptionSelector, ColourSelector } from '../CustomiserInputs/CustomiserInputs';
 
 import styles from './GlobalOptions.module.css';
 

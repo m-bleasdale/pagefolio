@@ -3,7 +3,7 @@ import { React, useState } from 'react';
 import styles from './BlockCustomiser.module.css';
 
 import fields from './CustomiserFields';
-import {OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector, IconSelector} from './CustomiserInputs';
+import {OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector, IconSelector} from '../../CustomiserInputs/CustomiserInputs';
 
 function Input ({onUpdate, type, options}) {
 

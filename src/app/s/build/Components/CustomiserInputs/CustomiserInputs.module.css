@@ -1,85 +1,88 @@
-.TitleContainer {
-    display: grid;
-    grid-template-columns: 268px 32px;
+/* Global Styles */
+
+.CloseButton {
+    color: var(--foreground);
+    transition: all 0.25s ease;
+    width: 22px;
+    height: 22px;
 }
 
-.TitleContainer svg {
-    align-self: self-end;
-    color: var(--foreground);
+.CloseButton:hover {
+    color: var(--error);
+    cursor: pointer;
+}
+
+
+.EditButton {
+    height: 28px;
+    width: 28px;
+    cursor: pointer;
     transition: all 0.25s ease;
 }
 
-.TitleContainer svg:hover {
-    color: var(--error);
-    cursor: pointer;
+.EditButton:hover {
+    color: var(--primary);
 }
 
 
-.HeadingContainer{
+.Menu {
+    border: 1px solid var(--background-darker);
+    background-color: var(--background);
+    border-radius: 8px;
+    position: relative;
+    display: inline-block;  
+    box-shadow: 0 10px 15px -3px #0000001a;
+    padding: 8px 10px;
+    width: 262px;
+}
+
+.MenuTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.MenuContent {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 8px;
+}
+
+.MenuItem {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-top: 10px;
-    width: 300px;
+    justify-content: center;
     gap: 8px;
-}
-
-.HeadingContainer svg {
-    width: 32px;
-    height: 32px;
-    color: var(--primary);
-}
-
-.HeadingContainer h2 {
-    font-size: 1.2rem;
-    font-weight: 400;
-    width: 300px;
-    color: var(--primary);
-}
-
-.CustomiserContainer {
-    width: 300px;
-}
-
-.CustomiserContainer h3 {
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding-bottom: 10px;
-}
-
-.BlockOptionContainer {
-    margin-top: 20px;
-}
-
-.BlockDataContainer {
-    margin-top: 20px;
-}
-
-.Confirm{
-    font-size: 1.05rem;
-    font-family: inherit;
-    background-color: var(--primary);
-    color: var(--background);
+    padding: 15px 0;
     border: none;
+    background: none;
+    cursor: pointer;  
+    width: 80px;
+}
+
+.MenuItem:hover {
+    background-color: var(--background-accent);
+}
+
+
+.AddButton {
     cursor: pointer;
-    padding: 9px 20px;
-    border-radius: 12px;
+    padding: 8px 15px;
+    border-radius: 8px;
     transition: all 0.3s ease;
-    margin-top: 20px;
+    font-size: 0.95rem;
+    border: none;
+    background-color: var(--background-darker);
 }
 
-.Confirm:hover{
-    background-color: var(--primary-darker);
-    box-shadow: 0 10px 15px -3px #0000001a;
+.AddButton:hover{
+    background-color: var(--background-darker-accent);
 }
 
-.Error, .required {
-    color: var(--error);
-    font-weight: 500;
-    margin-top: 10px;
-}
 
-/* Inputs */
+
 
 .OptionSelector {
     display: flex;
@@ -227,60 +230,6 @@
     font-family: inherit;
 }
 
-.SocialLinksContainer .AddButton {
-    cursor: pointer;
-    padding: 8px 15px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    border: none;
-    background-color: var(--background-darker);
-}
-
-.SocialLinksContainer .AddButton:hover{
-    background-color: var(--background-darker-accent);
-}
-
-.SocialLinksContainer .PlatformMenu {
-    border: 1px solid var(--background-darker);
-    background-color: var(--background);
-    border-radius: 8px;
-    position: relative;
-    display: inline-block;  
-    box-shadow: 0 10px 15px -3px #0000001a;
-    padding: 8px 10px;
-    width: 262px;
-}
-
-.SocialLinksContainer .PlatformMenuTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.SocialLinksContainer .DropdownContent {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-top: 8px;
-}
-
-.SocialLinksContainer .DropdownItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 10px;
-    border: none;
-    background: none;
-    cursor: pointer;  
-    width: 80px;
-}
-
-.SocialLinksContainer .DropdownItem:hover {
-    background-color: var(--background-accent);
-}
-
 .SocialLinksContainer .PlatformIcon {
     width: 32px;
     height: 32px;
@@ -374,34 +323,12 @@
     box-shadow: 0 10px 15px -3px #0000001a;
 }
 
-.SocialLinksContainer .SocialEditButton {
-    height: 28px;
-    width: 28px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-.SocialLinksContainer .SocialEditButton:hover {
-    color: var(--primary);
-}
-
-.SocialLinksContainer .RemoveButton {
-    color: var(--foreground);
-    transition: all 0.25s ease;
-    width: 22px;
-    height: 22px;
-}
-
-.SocialLinksContainer .RemoveButton#SocialEdit {
+.CloseButton#SocialEdit {
     color: var(--error);
     width: 28px;
     height: 28px;
 }
 
-.SocialLinksContainer .RemoveButton:hover {
-    color: var(--error);
-    cursor: pointer;
-}
 
 
 
@@ -436,24 +363,6 @@
     display: inline-block;  
     box-shadow: 0 10px 15px -3px #0000001a;
     padding: 8px 10px;
-}
-
-.ColourPickerContainer .MenuTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.ColourPickerContainer .CloseButton {
-    color: var(--foreground);
-    transition: all 0.25s ease;
-    width: 22px;
-    height: 22px;
-}
-
-.ColourPickerContainer .CloseButton:hover {
-    color: var(--error);
-    cursor: pointer;
 }
 
 .ColourOptions {
@@ -510,20 +419,6 @@
     font-family: inherit;
 }
 
-.IconSelector .AddButton {
-    cursor: pointer;
-    padding: 8px 15px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    border: none;
-    background-color: var(--background-darker);
-}
-
-.IconSelector .AddButton:hover{
-    background-color: var(--background-darker-accent);
-}
-
 .IconSelector .IconPreviewContainer {
     display: flex;
     flex-direction: row;
@@ -531,99 +426,19 @@
     align-items: center;
 }
 
-.IconSelector .IconSelectorMenu {
-    border: 1px solid var(--background-darker);
-    background-color: var(--background);
-    border-radius: 8px;
-    position: relative;
-    display: inline-block;  
-    box-shadow: 0 10px 15px -3px #0000001a;
-    padding: 8px 10px;
-    width: 262px;
-}
-
-.IconSelector .IconSelectorMenuTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.IconSelector .DropdownContent {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding-top: 8px;
-}
-
-.IconSelector .DropdownItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 15px 0;
-    border: none;
-    background: none;
-    cursor: pointer;  
-    width: 80px;
-}
-
-.IconSelector .DropdownItem:hover {
-    background-color: var(--background-accent);
-}
-
-.IconSelector .DropdownItem p{
+.IconSelector .MenuItem p{
     font-size: 0.925rem;
 }
-
-.IconSelector .EditButton {
-    height: 28px;
-    width: 28px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-.IconSelector .EditButton:hover {
-    color: var(--primary);
-}
-
-.IconSelector .CloseButton {
-    color: var(--foreground);
-    transition: all 0.25s ease;
-    width: 22px;
-    height: 22px;
-}
-
-.IconSelector .CloseButton:hover {
-    color: var(--error);
-    cursor: pointer;
-}
-
 
 
 
 @media (max-width: 1670px) {
-    .TitleContainer {
-        grid-template-columns: 214px 32px;
-    }
 
-    .HeadingContainer{
+    .Menu {
         width: 240px;
     }
 
-    .HeadingContainer h2 {
-        width: 240px;
-    }
-    
-    .CustomiserContainer {
-        width: 240px;
-    }
-
-    .SocialLinksContainer .PlatformMenu {
-        width: 240px;
-    }
-
-    .SocialLinksContainer .DropdownItem {
+    .MenuItem {
         width: 72px;
     }
 

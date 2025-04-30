@@ -1,0 +1,99 @@
+.TitleContainer {
+    display: grid;
+    grid-template-columns: 268px 32px;
+}
+
+.TitleContainer svg {
+    align-self: self-end;
+    color: var(--foreground);
+    transition: all 0.25s ease;
+}
+
+.TitleContainer svg:hover {
+    color: var(--error);
+    cursor: pointer;
+}
+
+
+.HeadingContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    width: 300px;
+    gap: 8px;
+}
+
+.HeadingContainer svg {
+    width: 32px;
+    height: 32px;
+    color: var(--primary);
+}
+
+.HeadingContainer h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    width: 300px;
+    color: var(--primary);
+}
+
+.CustomiserContainer {
+    width: 300px;
+}
+
+.CustomiserContainer h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.BlockOptionContainer {
+    margin-top: 20px;
+}
+
+.BlockDataContainer {
+    margin-top: 20px;
+}
+
+.Confirm{
+    font-size: 1.05rem;
+    font-family: inherit;
+    background-color: var(--primary);
+    color: var(--background);
+    border: none;
+    cursor: pointer;
+    padding: 9px 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.Confirm:hover{
+    background-color: var(--primary-darker);
+    box-shadow: 0 10px 15px -3px #0000001a;
+}
+
+.Error, .required {
+    color: var(--error);
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+
+@media (max-width: 1670px) {
+    .TitleContainer {
+        grid-template-columns: 214px 32px;
+    }
+
+    .HeadingContainer{
+        width: 240px;
+    }
+
+    .HeadingContainer h2 {
+        width: 240px;
+    }
+    
+    .CustomiserContainer {
+        width: 240px;
+    }
+}
