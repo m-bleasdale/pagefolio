@@ -4,7 +4,7 @@ import ButtonLinkStyles from './ButtonLink.module.css';
 import Icon from './Icon';
 
 export default function ButtonLink ({data, options, global}) {
-    if(!data || !options) return;
+    if(!data || !data.Link || !options) return;
     
     let additionalStyles = {
         background_color: global.backgroundColor,
