@@ -1,0 +1,71 @@
+.OverlayContainer {
+    cursor: pointer;
+}
+.OverlayContainer:hover {
+    outline: 1px solid var(--primary-light);
+    outline-offset: -1px;
+}
+.OverlayContainer#Focused {
+    outline: 1px solid var(--primary);
+    outline-offset: -1px;
+}
+
+.MenuContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Menu {
+    border: 1px solid var(--background-darker);
+    background-color: var(--background);
+    border-radius: 8px;
+    position: absolute;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 15px -3px #0000001a;
+    padding: 8px 10px;
+
+    width: 200px;
+    height: 40px;
+}
+
+.MenuLeft, .MenuRight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.CloseButton {
+    color: var(--foreground);
+    transition: all 0.25s ease;
+    width: 22px;
+    height: 22px;
+}
+
+.CloseButton:hover {
+    color: var(--error);
+    cursor: pointer;
+}
+
+
+.EditButton, .RemoveButton {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.EditButton:hover {
+    color: var(--primary);
+}
+
+.RemoveButton:hover {
+    color: var(--error);
+}

@@ -1,9 +1,11 @@
-import { React, useState } from 'react';
+import { React, useState, useContext, useEffect } from 'react';
 
 import styles from './BlockSelector.module.css';
 import customiserStyles from './BlockCustomiser/BlockCustomiser.module.css';
 
 import BlockCustomiser from './BlockCustomiser/BlockCustomiser';
+
+import { EditorContext } from '../../page';
 
 const blockGroups = [
     {
@@ -54,23 +56,68 @@ const blockGroups = [
     }
 ]
 
-export default function BlockSelector({ onAddBlock }) {
+export default function BlockSelector({ onAddBlock, }) {
     const [displayCustomiser, setDisplayCustomiser] = useState(false);
     const [customiserBlockType, setCustomiserBlockType] = useState('');
     const [customiserBlockName, setCustomiserBlockName] = useState('');
     const [customiserBlockIcon, setCustomiserBlockIcon] = useState(<></>);
+    const [customiserInitialData, setCustomiserInitialData] = useState({});
+    const [edittingExistingBlock, setEdittingExistingBlock] = useState(false);
+
+    //Handle display of settings editor for existing blocks
+    const { selectedPreviewBlock, SetSelectedPreviewBlock, Blocks, SetBlocks } = useContext(EditorContext);
+    useEffect(() => {
+        if(!selectedPreviewBlock) return resetCustomiser();
+        setEdittingExistingBlock(true);
+        
+        const block = Blocks.find(block => block.id === selectedPreviewBlock);
+
+        setDisplayCustomiser(true);
+        setCustomiserInitialData(block);
+        setCustomiserBlockType(block.type);
+
+        let displayDataForBlock;
+        for (const group of blockGroups) {
+            for (const blockItem of group.blocks) {
+                if (blockItem.block === block.type) {
+                    displayDataForBlock = { title: blockItem.title, icon: blockItem.icon };
+                }
+            }
+        }
+        
+        setCustomiserBlockName(displayDataForBlock.title);
+        setCustomiserBlockIcon(displayDataForBlock.icon);
+
+    }, [selectedPreviewBlock]);
 
     function resetCustomiser(){
         setDisplayCustomiser(false);
         setCustomiserBlockType('');
         setCustomiserBlockName('');
         setCustomiserBlockIcon('');
+        setCustomiserInitialData({});
+        setEdittingExistingBlock(false);
     }
 
     function handleConfirmation(data) {
-        onAddBlock(data);
+        let dataWithID = {...data, id: crypto.randomUUID()};
+        SetBlocks(prevBlocks => [...prevBlocks, dataWithID]);
         console.log(data);
         resetCustomiser();
+    }
+
+    function handleUpdateOfExistingBlock(data) {
+        const blockIndex = Blocks.findIndex(block => block.id === customiserInitialData.id);
+        if (blockIndex !== -1) {
+            SetBlocks(prevBlocks => prevBlocks.map((block, index) => index === blockIndex ? data : block));
+        }
+        resetCustomiser();
+        SetSelectedPreviewBlock(null);
+    }
+
+    function handleCustomiserClose() {
+        resetCustomiser();
+        SetSelectedPreviewBlock(null);
     }
 
     function handleBlockPress(blockType, blockName, blockIcon) {
@@ -84,8 +131,8 @@ export default function BlockSelector({ onAddBlock }) {
         return (
             <div className={styles.Container}>
                 <div className={customiserStyles.TitleContainer}>
-                    <h1>Add New Block</h1>
-                    <svg onClick={resetCustomiser} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    {edittingExistingBlock ? <h1>Block Editor</h1> : <h1>Add block</h1>}
+                    <svg onClick={handleCustomiserClose} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </div>
@@ -93,7 +140,12 @@ export default function BlockSelector({ onAddBlock }) {
                     {customiserBlockIcon}
                     <h2>{customiserBlockName}</h2>
                 </div>
-                <BlockCustomiser blockType={customiserBlockType} onConfirmation={(data) => handleConfirmation(data)}/>
+                <BlockCustomiser 
+                    blockType={customiserBlockType} 
+                    initialData={customiserInitialData} 
+                    onConfirmation={(data) => handleConfirmation(data)}
+                    onUpdate={(data) => handleUpdateOfExistingBlock(data)}
+                />
             </div>
         )
     }

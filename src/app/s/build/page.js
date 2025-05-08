@@ -14,7 +14,7 @@ import BlockSelector from './Components/BlockSelector/BlockSelector';
 import GlobalOptions from './Components/GlobalOptions/GlobalOptions';
 import Header from './Components/Header/Header';
 
-import Builder from '@/app/Builder';
+import Builder from './Components/Preview/Builder';
 
 import styles from "./build.module.css";
 
@@ -32,7 +32,7 @@ const temp_global = {
     shadowsEnabled: false    
 }
 
-export const PageInformationContext = createContext();
+export const EditorContext = createContext();
 
 export default function Build() {
     const { user, error, isLoading } = useUser();
@@ -41,6 +41,8 @@ export default function Build() {
 
     const [PageID, SetPageID] = useState();
     const [displayMobile, SetDisplayMobile] = useState(false);
+
+    const [selectedPreviewBlock, SetSelectedPreviewBlock] = useState(null);
 
     const [Blocks, SetBlocks] = useState([]);
     //Default values
@@ -96,18 +98,18 @@ export default function Build() {
     if(isLoading) return <Loading />
 
     return(
-        <PageInformationContext.Provider value={{pageID: PageID}}>
+        <EditorContext.Provider value={{pageID: PageID, selectedPreviewBlock, SetSelectedPreviewBlock, Blocks, SetBlocks}}>
         <div className={styles.Page}>
             <Header />
             <div 
                 className={styles.BuilderContainer}
                 style={{backgroundColor: Options.backgroundColor}}
             >
-                <Builder blocks={Blocks} global={Options}/>
+                <Builder blocks={Blocks} global={Options} forEditor={true}/>
             </div>
             <GlobalOptions initialOptions={Options} onUpdate={(newOptions) => SetOptions(newOptions)}/>
-            <BlockSelector onAddBlock={(newBlock) => SetBlocks(prevBlocks => [...prevBlocks, newBlock])}/>
+            <BlockSelector/>
         </div>
-        </PageInformationContext.Provider>
+        </EditorContext.Provider>
     );
 };

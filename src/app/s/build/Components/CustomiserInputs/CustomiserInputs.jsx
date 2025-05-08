@@ -3,7 +3,7 @@ import { React, useState, useContext, useEffect, useMemo } from 'react';
 import { debounce } from 'lodash';
 
 import { createClient } from '@/utils/supabase/client';
-import { PageInformationContext } from '../../page';
+import { EditorContext } from '../../page';
 
 import platforms from './SocialMediaPlatforms';
 import icons from '@/utils/Icons';
@@ -43,8 +43,12 @@ function OptionSelector({onUpdate, options, initialValue}) {
 
 }
 
-function TextAlign({onUpdate}) {
+function TextAlign({onUpdate, initialValue}) {
     const [selectedRadioOption, setSelectedRadioOption] = useState('');
+
+    useEffect(() => {
+        if(initialValue) setSelectedRadioOption(initialValue);
+    }, []);
 
     const options = [
         {
@@ -90,20 +94,23 @@ function TextAlign({onUpdate}) {
 
 }
 
-function SmallTextBox({onUpdate}) {
+function SmallTextBox({onUpdate, initialValue}) {    
     return (
-        <input className={styles.SmallTextBox}
+        <input 
+        className={styles.SmallTextBox}
         type="text"
         placeholder="Please type something"
+        defaultValue={initialValue || ''}
         onChange={(e) => {onUpdate(e.target.value)}}
         />
     )
 }
 
-function LargeTextArea({onUpdate}) {
+function LargeTextArea({onUpdate, initialValue}) {
     return (
         <textarea className={styles.LargeTextArea}
         placeholder="Please type something"
+        defaultValue={initialValue || ''}
         onChange={(e) => {onUpdate(e.target.value)}}
         />
     )
@@ -111,7 +118,7 @@ function LargeTextArea({onUpdate}) {
 }
 
 function PageLogoUpload({onUpdate}) {
-    const {pageID} = useContext(PageInformationContext);
+    const {pageID} = useContext(EditorContext);
     const PageID = pageID[0].id;
 
     const [uploadedFileURL, setUploadedFileURL] = useState();
@@ -172,11 +179,32 @@ function PageLogoUpload({onUpdate}) {
     )
 }
 
-function SocialSelector ({onUpdate}){
+function SocialSelector ({onUpdate, initialValue}){
     const [linkedSocials, setLinkedSocials] = useState([]);
     const [showOptions, setShowOptions] = useState(false);
     const [selectedPlatform, setSelectedPlatform] = useState(null);
     const [tempUrl, setTempUrl] = useState('');
+
+    useEffect(() => {
+        let currentPlatforms = []
+        
+        if(initialValue) {
+            for (const item in initialValue){
+
+                const value = initialValue[item];
+
+                const logo = platforms.find((element) => element.name === value.platform)?.logo;
+
+                currentPlatforms.push({
+                    platform: {name: value.platform, logo: logo},
+                    link: value.link,
+                    isEditing: false
+                });
+            }
+        }
+
+        setLinkedSocials(currentPlatforms);
+    }, []);
 
     useEffect(() => {
         let SocialLinks = [];
@@ -274,6 +302,7 @@ function SocialSelector ({onUpdate}){
             <div className={styles.LinkedList}>
                 {linkedSocials.map((item, index) => (
                 <div key={index} className={styles.LinkedItem}>
+                                        {console.log(item)}
                     <img src={item.platform.logo} alt={item.platform.name} className={styles.PlatformIcon} />
                     <input
                     type="url"

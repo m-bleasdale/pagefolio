@@ -5,7 +5,7 @@ import About from "@/blocks/About/About";
 import CardList from "@/blocks/CardList/CardList";
 import ButtonLink from "@/blocks/ButtonLink/ButtonLink";
 
-function Block ({type, data, options, global}) {
+export function Block ({type, data, options, global}) {
 
     const components = {
         'Header': <Header data={data} options={options} global={global} />,

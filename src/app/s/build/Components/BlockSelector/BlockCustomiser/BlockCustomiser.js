@@ -1,28 +1,34 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 
 import styles from './BlockCustomiser.module.css';
 
 import fields from './CustomiserFields';
 import {OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector, IconSelector} from '../../CustomiserInputs/CustomiserInputs';
 
-function Input ({onUpdate, type, options}) {
+function Input ({onUpdate, type, options, initialValue}) {
 
-    if(type === 'options' && options) return <OptionSelector options={options} onUpdate={(selectedOption) => onUpdate(selectedOption)} />
-    if(type === 'text-align') return <TextAlign onUpdate={(selectedOption) => onUpdate(selectedOption)} />
-    if(type === 'short-text') return <SmallTextBox onUpdate={(text) => onUpdate(text)} />
-    if(type === 'page-logo') return <PageLogoUpload onUpdate={(tempURL) => onUpdate(tempURL)}/>
-    if(type === 'socials') return <SocialSelector onUpdate={(newSocialList) => onUpdate(newSocialList)} />
-    if(type === 'long-text') return <LargeTextArea onUpdate={(text) => onUpdate(text)} />
-    if(type === 'icon') return <IconSelector onUpdate={(iconName) => onUpdate(iconName)} />
+    if(type === 'options' && options) return <OptionSelector initialValue={initialValue} options={options} onUpdate={(selectedOption) => onUpdate(selectedOption)} />
+    if(type === 'text-align') return <TextAlign initialValue={initialValue} onUpdate={(selectedOption) => onUpdate(selectedOption)} />
+    if(type === 'short-text') return <SmallTextBox initialValue={initialValue} onUpdate={(text) => onUpdate(text)} />
+    if(type === 'page-logo') return <PageLogoUpload initialValue={initialValue} onUpdate={(tempURL) => onUpdate(tempURL)}/>
+    if(type === 'socials') return <SocialSelector initialValue={initialValue} onUpdate={(newSocialList) => onUpdate(newSocialList)} />
+    if(type === 'long-text') return <LargeTextArea initialValue={initialValue} onUpdate={(text) => onUpdate(text)} />
+    if(type === 'icon') return <IconSelector initialValue={initialValue} onUpdate={(iconName) => onUpdate(iconName)} />
 
 }
 
-export default function BlockCustomiser ({blockType, onConfirmation}) {
+export default function BlockCustomiser ({blockType, initialData, onConfirmation, onUpdate}) {
     if(!blockType || !fields[blockType]) return;
 
     const [data, setData] = useState({type: blockType, data: {}, options:{}});
 
     const [error, setError] = useState('');
+
+    useEffect(() => {
+        if(initialData && initialData.data){
+            setData(initialData);
+        }
+    }, [])
 
     function ValidateThenConfirm() {
         for(const optionFieldIndex in fields[blockType].options)
@@ -41,6 +47,11 @@ export default function BlockCustomiser ({blockType, onConfirmation}) {
                 setError(`${dataField.displayName} is required`);
                 return;
             }
+        }
+
+        if(initialData && initialData.data){
+            onUpdate(data);
+            return;
         }
 
         onConfirmation(data);
@@ -72,13 +83,22 @@ export default function BlockCustomiser ({blockType, onConfirmation}) {
             {fields[blockType].options.map((option, index) => (
                 <div className={styles.BlockOptionContainer} key={index}>
                     <h3>{option.displayName}{option.required && <span className={styles.required}> *</span>}</h3>
-                    <Input type={option.type} options={option.options} onUpdate={(newValue) => optionUpdated(option.fieldName, newValue)}/>
+                    <Input 
+                        type={option.type} 
+                        options={option.options} 
+                        onUpdate={(newValue) => optionUpdated(option.fieldName, newValue)}
+                        initialValue={initialData && initialData.options ? initialData.options[option.fieldName] : null}
+                    />
                 </div>
             ))}
             {fields[blockType].data.map((field, index) => (
                 <div className={styles.BlockDataContainer} key={index}>
                     <h3>{field.displayName}{field.required && <span className={styles.required}> *</span>}</h3>
-                    <Input type={field.type} onUpdate={(newValue) => dataUpdated(field.fieldName, newValue)}/>
+                    <Input 
+                        type={field.type}
+                        onUpdate={(newValue) => dataUpdated(field.fieldName, newValue)}
+                        initialValue={initialData && initialData.data ? initialData.data[field.fieldName] : null}
+                    />
                 </div>
             ))}
             <button className={styles.Confirm} onClick={ValidateThenConfirm}>Confirm</button>
