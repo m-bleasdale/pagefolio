@@ -43,11 +43,17 @@ export default function Socials ({data, style, global}) {
         <div className={SocialsStyles.SocialsContainer}>
             {data.map((element) => {
                 if(!element.platform || !platforms[element.platform]) return;
+
+                const normalizedLink = element.link.trim().toLowerCase();
+                const fullLink = normalizedLink.startsWith("http") 
+                ? data.Link 
+                : `https://${normalizedLink}`;            
+
                 return(
                     <a 
                         className={SocialsStyles.SocialLink} 
                         key={element.platform}
-                        href={element.link} 
+                        href={fullLink} 
                         target="_blank" 
                         rel="noopener noreferrer" 
                     >
