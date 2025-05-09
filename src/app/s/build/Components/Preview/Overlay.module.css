@@ -55,16 +55,13 @@
 }
 
 
-.EditButton, .RemoveButton {
-    height: 24px;
-    width: 24px;
+.RemoveButton {
+    height: 22px;
+    width: 22px;
     cursor: pointer;
     transition: all 0.25s ease;
 }
 
-.EditButton:hover {
-    color: var(--primary);
-}
 
 .RemoveButton:hover {
     color: var(--error);
