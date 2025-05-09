@@ -38,15 +38,16 @@
     padding: 15px;
     border-radius: 14px;
     align-items: center;  
+    transition: all ease 0.25s;
 }
 
 .ButtonContainer:hover{
     cursor: pointer;
     text-decoration: underline;
     box-shadow: 0 10px 15px -3px #0000001a;
-    transition: 0.25s;
 }
 
+/*
 .ButtonContainer:hover::after {
     content: "";
     position: absolute;
@@ -55,6 +56,7 @@
     pointer-events: none;
     z-index: 0;
 }
+*/
 
 .Icon {
     height: 32px;
