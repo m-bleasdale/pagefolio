@@ -19,6 +19,8 @@ export default function EditorOverlayProvider ({children, id, type}) {
     function handleRemove() {
         const blockIndex = Blocks.findIndex(block => block.id === id);
         SetBlocks(prevBlocks => prevBlocks.filter((_, index) => index !== blockIndex));
+        SetSelectedPreviewBlock(null);
+        setShowOverlay(false);
     }
 
     useEffect(() => {
