@@ -28,8 +28,9 @@
 
 .Main img{
     height: 40px;
-    width: auto;
+    width: 40px;
     object-fit: cover;
+    border-radius: 100%;
 }
 
 /* Convert to variant of vertical when on small screen */

@@ -24,6 +24,7 @@
 
 .Main img{
     height: 75px;
-    width: auto;
+    width: 75px;
     object-fit: cover;
+    border-radius: 100%;
 }
