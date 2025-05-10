@@ -39,9 +39,3 @@
     gap: 15px;
     border-radius: 14px;
 }
-
-.Image img{
-    height: auto;
-    width: 250px;
-    object-fit: contain;
-}

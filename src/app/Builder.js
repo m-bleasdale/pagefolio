@@ -4,6 +4,7 @@ import Header from "@/blocks/Header/Header";
 import About from "@/blocks/About/About";
 import CardList from "@/blocks/CardList/CardList";
 import ButtonLink from "@/blocks/ButtonLink/ButtonLink";
+import ImageWithText from '@/blocks/ImageWithText/ImageWithText';
 
 export function Block ({type, data, options, global}) {
 
@@ -11,7 +12,8 @@ export function Block ({type, data, options, global}) {
         'Header': <Header data={data} options={options} global={global} />,
         'About': <About data={data} options={options} global={global} />, 
         'ButtonLink': <ButtonLink data={data} options={options} global={global} />,
-        'CardList': <CardList data={data} options={options} global={global} />
+        'CardList': <CardList data={data} options={options} global={global} />,
+        'ImageWithText': <ImageWithText data={data} options={options} global={global} />
     }
 
     return components[type];
