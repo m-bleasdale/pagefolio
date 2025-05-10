@@ -84,18 +84,16 @@ a.secondary {
 
 .footer {
   grid-row-start: 3;
+  grid-column-start: 2;
   display: flex;
-  gap: 24px;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer img {
-  flex-shrink: 0;
+.footer img{
+    height: 48px;
 }
 
 /* Enable hover only on non-touch devices */

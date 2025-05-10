@@ -60,9 +60,12 @@ export default async function Page({ params }) {
         className={styles.page}
         style={{backgroundColor: data.global_options.backgroundColor}}
         >
-            <div className={styles.main}>
+            <main className={styles.main}>
                 <Builder blocks={data.blocks} global={data.global_options} />
-            </div>
+            </main>
+            <footer className={styles.footer}>
+                <img src='LogoFull.png' />
+            </footer>
         </div>
     )
 }
