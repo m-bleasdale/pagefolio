@@ -101,10 +101,11 @@ export default function BlockCustomiser ({blockType, initialData, onConfirmation
                     />
                 </div>
             ))}
-            <button className={styles.Confirm} onClick={ValidateThenConfirm}>Confirm</button>
             <div className={styles.ErrorContainer}>
                 {error && <p className={styles.Error}>{error} </p>}
             </div>
+            <button className={styles.Confirm} onClick={ValidateThenConfirm}>Confirm</button>
+            
 
         </div>
     )

@@ -1,6 +1,7 @@
 .Page {
     min-height: 100svh;
     overflow: hidden;
+    font-family: 'Montserrat';
 }
 
 .BuilderContainer {

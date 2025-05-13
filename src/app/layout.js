@@ -1,5 +1,6 @@
 import "@/app/styles/globals.css";
 import { Montserrat } from 'next/font/google';
+import { Geist, Outfit, Inter } from 'next/font/google';
 import { Auth0Provider } from '@auth0/nextjs-auth0';
 
 export const metadata = {
@@ -8,6 +9,9 @@ export const metadata = {
 };
 
 const montserrat = Montserrat({ subsets: ['latin'] });
+const geist = Geist({ subsets: ['latin'] });
+const outfit = Outfit({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children }) {
   return (

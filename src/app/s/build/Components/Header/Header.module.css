@@ -56,19 +56,28 @@
     width: auto;
 }
 
-.Publish button{
-    font-size: 1.05rem;
-    font-family: inherit;
+.Publish {
     background-color: var(--primary);
     color: var(--background);
-    border: none;
-    cursor: pointer;
-    padding: 9px 20px;
+    padding: 8px 18px;
     border-radius: 12px;
     transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
-.Publish button:hover{
+.Publish button{
+    font-size: 1.05rem;
+    font-family: 'Inter';
+    color: inherit;
+    background-color: inherit;
+    border: none;
+    cursor: inherit;
+}
+
+.Publish:hover{
     background-color: var(--primary-darker);
     box-shadow: 0 10px 15px -3px #0000001a;
 }

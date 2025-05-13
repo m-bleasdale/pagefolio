@@ -102,9 +102,9 @@
     cursor: pointer;
     padding: 7px 12px;
     border-radius: 8px;
-    border: 1px solid var(--foreground-light);
+    border: 1px solid var(--foreground-light-border);
     transition: all 0.3s ease;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -173,12 +173,12 @@
 
 
 .SmallTextBox {
-    font-size: 1rem;
-    padding: 10px 10px;
+    font-size: 0.925rem;
+    padding: 8px 8px;
     width: 90%;
-    border: 1px solid var(--foreground-light);
+    border: 1px solid var(--foreground-light-border);
     border-radius: 8px;
-    font-family: 'Montserrat';
+    font-family: 'Inter';
 }
 
 .SmallTextBox:active, .SmallTextBox:focus {
@@ -200,7 +200,7 @@
     font-size: 1rem;
     padding: 10px 10px;
     width: 90%;
-    border: 1px solid var(--foreground-light);
+    border: 1px solid var(--foreground-light-border);
     border-radius: 8px;
     font-family: 'Montserrat';
     resize: vertical;
@@ -246,7 +246,7 @@
     font-size: 0.9rem;
     padding: 5px 8px;
     width: 90%;
-    border: 1px solid var(--foreground-light);
+    border: 1px solid var(--foreground-light-border);
     border-radius: 8px;
     font-family: 'Montserrat';
 }
@@ -255,7 +255,6 @@
     outline: none;
     border: 1px solid var(--primary);
     background-color: var(--background-accent);
-    box-shadow: 0 10px 15px -3px #0000001a;
 }
 
 .SocialLinksContainer .URLEditor input:hover {
@@ -295,9 +294,23 @@
 .SocialLinksContainer .LinkedItem input {
     font-size: 0.9rem;
     padding: 4px 5px;
-    border: 1px solid var(--foreground-light);
+    border: 1px solid var(--foreground-light-border);
     border-radius: 8px;
     font-family: 'Montserrat';
+}
+
+.SocialLinksContainer .LinkedItem input:hover {
+    outline: none;
+    border: 1px solid var(--primary);
+}
+
+.SocialLinksContainer .LinkedItem input:disabled {
+    background-color: var(--input-disabled);
+}
+
+.SocialLinksContainer .LinkedItem input:disabled:hover {
+    outline: none;
+    border: 1px solid var(--foreground-light-border);
 }
 
 .SocialLinksContainer .LinkedItem input:focus {
@@ -307,14 +320,14 @@
 }
 
 .SocialLinksContainer .SaveButton {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-family: inherit;
     background-color: var(--primary);
     color: var(--background);
     border: none;
     cursor: pointer;
     padding: 4px 8px;
-    border-radius: 12px;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
@@ -347,10 +360,14 @@
     align-items: center;
 }
 
+.SelectedColourContainer p {
+    font-size: 0.925rem;
+}
+
 .ColourSampleContainer {
     width: 45px;
     height: 28px;
-    border: 1px solid var(--foreground-light);
+    border: 1px solid var(--foreground-light-border);
     cursor: pointer;
     border-radius: 8px;
 }

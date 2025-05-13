@@ -302,7 +302,6 @@ function SocialSelector ({onUpdate, initialValue}){
             <div className={styles.LinkedList}>
                 {linkedSocials.map((item, index) => (
                 <div key={index} className={styles.LinkedItem}>
-                                        {console.log(item)}
                     <img src={item.platform.logo} alt={item.platform.name} className={styles.PlatformIcon} />
                     <input
                     type="url"
