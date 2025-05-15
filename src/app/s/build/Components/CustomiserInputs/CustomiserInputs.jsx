@@ -353,9 +353,9 @@ function ColourSelector({ defaultColours, colour, onUpdate }) {
     };
 
     const PresetOptions = [
+        ["#F5FFFA", "#F8F8FF", "#FFFAFA", "#FAFAFA", "#FAF0E6", "#F5F5DC", "#E3DAC9"],
         ['#ffffff', '#f3f3f3', '#efefef', '#d9d9d9', '#999999', '#666666', '#000000'],
         ['#dd7e6b', '#ea9999', '#f9cb9c', '#ffe599', '#b6d7a8', '#a4c2f4', '#b4a7d6'],
-        ['#e6b8af', '#f4cccc', '#fce5cd', '#fff2cc', '#d9ead3', '#c9daf8', '#d9d2e9'],
         ['#cc4125', '#e06666', '#f6b26b', '#ffd966', '#93c47d', '#6d9eeb', '#8e7cc3'],
         ['#a61c00', '#cc0000', '#e69138', '#f1c232', '#6aa84f', '#3c78d8', '#674ea7'],
         ['#85200c', '#990000', '#b45f06', '#bf9000', '#38761d', '#1155cc', '#351c75'],
@@ -395,7 +395,7 @@ function ColourSelector({ defaultColours, colour, onUpdate }) {
                                         }}
                                         style={{
                                             backgroundColor: colourOption,
-                                            border: rowIndex === 0 && (index === 0 || index === 1) ? '1px solid #e6e6e6' : 'none',
+                                            border: rowIndex === 0 || (rowIndex === 1 && (index === 0 || index === 1)) ? '1px solid #e6e6e6' : 'none',
                                         }}
                                     ></div>
                                 ))}

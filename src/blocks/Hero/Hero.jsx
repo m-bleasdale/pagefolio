@@ -28,6 +28,7 @@ import { React } from 'react';
 
 import HeroStyles from './Hero.module.css';
 import ColourBackgroundStyles from './Styles/ColourBackground.module.css';
+import ImageBackgroundStyles from './Styles/ImageBackground.module.css';
 
 function ColourBackground(props) {
     const {data, options, global} = props.props;
@@ -35,20 +36,19 @@ function ColourBackground(props) {
     return (
         <div 
             className={HeroStyles.HeroContainer}
-            style={{backgroundColor: options.color}}
         >
             <div className={HeroStyles.ContentContainer}>
-                <div className={ColourBackgroundStyles.Content} id={ColourBackgroundStyles[`content_${options.size}`]}>
+                <div className={ColourBackgroundStyles.Content}>
                     <div className={ColourBackgroundStyles.TextContainer}>
-                        <h1 className={ColourBackgroundStyles.Heading} style={{ textAlign: options.TextAlign, color: global.foreground_onAlt}}>
+                        <h1 className={ColourBackgroundStyles.Heading} style={{ textAlign: options.TextAlign, color: global.foreground}}>
                             {data.TitleText}
                         </h1>
-                        <h2 className={ColourBackgroundStyles.SubHeading} style={{ textAlign: options.TextAlign, color: global.foreground_onAlt}}>
+                        <h2 className={ColourBackgroundStyles.SubHeading} style={{ textAlign: options.TextAlign, color: global.foreground}}>
                             {data.SubTitleText}
                         </h2>
                     </div>
                     {data.ImageSource && 
-                        <div className={ColourBackgroundStyles.Image} id={ColourBackgroundStyles[`image_${options.size}`]}>
+                        <div className={ColourBackgroundStyles.Image}>
                             <img src={data.ImageSource} alt="This is an image"/>
                         </div>
                     }
@@ -60,15 +60,40 @@ function ColourBackground(props) {
 }
 
 function ImageBackground(props) {
-    const {data, options, global} = props;
+    const {data, options, global} = props.props;
+
+    return (
+        <div className={HeroStyles.ContentContainer}>
+            <div 
+                className={ImageBackgroundStyles.Content} 
+                style={{backgroundImage: `url(${data.ImageSource})`}}
+            >
+                <div className={ImageBackgroundStyles.TextContainer}>
+                    <h1 className={ImageBackgroundStyles.Heading} style={{ textAlign: options.TextAlign}}>
+                        {data.TitleText}
+                    </h1>
+                    <h2 className={ImageBackgroundStyles.SubHeading} style={{ textAlign: options.TextAlign}}>
+                        {data.SubTitleText}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    )
 
 }
 
 export default function Hero({data, options, global}) {
 
-
     return (
-        <ColourBackground props={{data: data, options: options, global: global}}/>
+        <>
+        {options.variant === "ColourBackground" &&
+            <ColourBackground props={{data: data, options: options, global: global}}/>
+        }
+
+        {options.variant === "ImageBackground" &&
+            <ImageBackground props={{data: data, options: options, global: global}}/>
+        }
+        </>
     )
 
 }

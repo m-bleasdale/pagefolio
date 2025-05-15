@@ -1,17 +1,16 @@
 .HeroContainer{
-    margin-top: -50px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
 .ContentContainer{
     display: grid;
-    grid-template-columns: 25vw 1fr 25vw;
+    grid-template-columns: 22vw 1fr 22vw;
 }
 
 @media (max-width: 1670px) {
     .ContentContainer{
-        grid-template-columns: 20vw 1fr 20vw;
+        grid-template-columns: 18vw 1fr 18vw;
     }
 }
 

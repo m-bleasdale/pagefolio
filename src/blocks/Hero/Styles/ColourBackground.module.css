@@ -4,10 +4,7 @@
     justify-content: center;
     align-items: center;
     gap: 6%;
-}
-
-#content_large {
-    min-height: 300px;
+    min-height: 450px;
 }
 
 .TextContainer{
@@ -29,11 +26,9 @@
 
 .Image{
     border-radius: 14px;
-}
-
-#image_large {
     height: 350px;
     width: 47%;
+
 }
 
 .Image img {
