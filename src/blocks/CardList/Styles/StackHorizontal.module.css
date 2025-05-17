@@ -3,7 +3,6 @@
     flex-direction: column;
     gap: 30px;
     padding-top: 25px;
-    padding-bottom: 25px;
 }
 
 .Group {
@@ -13,13 +12,13 @@
     max-width: 100%;
     justify-content: center;
     margin: 0 auto;
+    min-height: 300px;
 }
 
 .CardContainer {
     display: flex;
     flex-direction: column;
-    width: 250px;
-    max-height: 241px;
+    width: 300px;
     overflow-y: hidden;
     border-radius: 14px;
 }
@@ -32,4 +31,14 @@
 .CardContainer:hover {
     box-shadow: 0 10px 15px -3px #0000001a;
     transition: 0.25s;
+}
+
+@media (max-width: 1600px) {
+    .Group {
+        min-height: 250px;
+    }
+
+    .CardContainer{
+        width: 250px;
+    }
 }
