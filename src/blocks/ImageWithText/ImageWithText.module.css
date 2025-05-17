@@ -1,6 +1,8 @@
 .Container{
     display: grid;
     grid-template-columns: 25vw 1fr 25vw;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .ImageWithText {
