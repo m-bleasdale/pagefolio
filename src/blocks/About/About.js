@@ -8,20 +8,17 @@ export default function About({data, options, global}) {
     let conditionalStyles = {
         background_color: global.backgroundColor,
         color: global.foreground,
-        border: 'none',
-        padding: '0'
+        border: 'none'
     }
 
     if(options.highlighted === 'minimal'){
         conditionalStyles.background_color = global.altBackgroundColor;
         conditionalStyles.color = global.foreground_onAlt;
         conditionalStyles.border = global.border;
-        conditionalStyles.padding = '15px';
     }
     else if(options.highlighted === 'primary'){
         conditionalStyles.background_color = global.primary;
         conditionalStyles.color = global.foreground_onPrimary;
-        conditionalStyles.padding = '15px';
     }
 
     return (

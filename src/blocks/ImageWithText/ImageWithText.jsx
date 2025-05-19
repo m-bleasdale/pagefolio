@@ -8,13 +8,39 @@ export default function ImageWithText({data, options, global}) {
     let align = 'left';
     if(options.align === 'right') align = 'right';
 
+    let conditionalStyles = {
+        background_color: global.backgroundColor,
+        color: global.foreground,
+        border: 'none',
+    }
+
+    if(options.display === "altBackground"){
+        conditionalStyles.background_color = global.altBackgroundColor;
+        conditionalStyles.color = global.foreground_onAlt;
+        conditionalStyles.border = global.border;
+    }
+    else if(options.display === 'primary'){
+        conditionalStyles.background_color = global.primary;
+        conditionalStyles.color = global.foreground_onPrimary;
+    }
+
+
     return (
-        <div className={ImageWithTextStyles.Container}>
-            <div className={ImageWithTextStyles.ImageWithText} id={ImageWithTextStyles[align]}>
-                <Image source={data.ImageSource} />
-                <div className={ImageWithTextStyles.Content}>
-                    <Heading align={options.TextAlign} colour={global.foreground}>{data.TitleText}</Heading>
-                    <Paragraph align={options.TextAlign} colour={global.foreground}>{data.BodyText}</Paragraph>
+        <div style={{backgroundColor: conditionalStyles.background_color}}>
+            <div className={ImageWithTextStyles.Container}>
+                <div 
+                    className={ImageWithTextStyles.ImageWithText} 
+                    id={ImageWithTextStyles[align]}
+                    style={{
+                        border: conditionalStyles.border,
+                        padding: conditionalStyles.padding
+                    }}
+                >
+                    <Image source={data.ImageSource} />
+                    <div className={ImageWithTextStyles.Content}>
+                        <Heading align={options.TextAlign} colour={conditionalStyles.color}>{data.TitleText}</Heading>
+                        <Paragraph align={options.TextAlign} colour={conditionalStyles.color}>{data.BodyText}</Paragraph>
+                    </div>
                 </div>
             </div>
         </div>

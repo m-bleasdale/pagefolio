@@ -168,6 +168,17 @@ const fields = {
         ],
         options: [
             {
+                fieldName: 'display',
+                displayName: 'Display Style',
+                type: 'options',
+                required: true,
+                options: [
+                    { displayName: 'Normal', optionName: 'normal' },
+                    { displayName: 'Background', optionName: 'altBackground' },
+                    { displayName: 'Highlighted', optionName: 'primary'}
+                ]
+            },
+            {
                 fieldName: 'TextAlign',
                 displayName: 'Text Align',
                 type: 'text-align',
