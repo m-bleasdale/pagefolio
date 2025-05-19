@@ -197,12 +197,12 @@
 
 
 .LargeTextArea {
-    font-size: 1rem;
+    font-size: 0.925rem;
     padding: 10px 10px;
     width: 90%;
     border: 1px solid var(--foreground-light-border);
     border-radius: 8px;
-    font-family: 'Montserrat';
+    font-family: 'Inter';
     resize: vertical;
     height: 140px;
 }
@@ -400,6 +400,7 @@
     width: 23px;
     border-radius: 100px;
     cursor: pointer;
+    border: 1px solid #e6e6e6;
 }
 
 .CustomColour{

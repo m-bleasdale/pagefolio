@@ -26,7 +26,7 @@ export default function Header ({data, options, global}) {
         <div className={HeaderStyles.HeaderContainer} 
             style={{
                 backgroundColor: global.altBackgroundColor, 
-                borderBottom: global.border,
+                borderBottom: `1px solid ${global.border}`,
                 boxShadow: shadow
             }}
         >

@@ -23,8 +23,8 @@
 }
 
 .Main img{
-    height: 40px;
-    width: 40px;
+    max-height: 50px;
+    width: 50px;
     object-fit: cover;
-    border-radius: 100%;
+    border-radius: 10px;
 }

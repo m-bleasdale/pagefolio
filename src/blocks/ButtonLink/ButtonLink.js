@@ -32,7 +32,7 @@ export default function ButtonLink ({data, options, global}) {
             <a className={ButtonLinkStyles.ButtonContainer}
                 style={{
                     backgroundColor: additionalStyles.background_color,
-                    border: additionalStyles.border,
+                    border: `1px solid ${additionalStyles.border}`,
                     color: additionalStyles.color
                 }}
                 href={fullLink} 

@@ -117,6 +117,63 @@ const fields = {
 
             }
         ]
+    },
+    'Hero': {
+        data: [
+            {
+                fieldName: 'TitleText',
+                displayName: 'Title',
+                type: 'short-text'
+            },
+            {
+                fieldName: 'SubTitleText',
+                displayName: 'Subtitle',
+                type: 'short-text'
+            },
+            {
+                fieldName: 'ImageSource',
+                displayName: 'Image',
+                type: 'image',
+            }
+        ],
+        options: [
+            {
+                fieldName: 'TextAlign',
+                displayName: 'Text Align',
+                type: 'text-align',
+                required: true
+            }
+        ]
+    },
+    'ImageWithText': {
+        data: [
+            {
+                fieldName: 'TitleText',
+                displayName: 'Title',
+                type: 'short-text'
+            },
+            {
+                fieldName: 'BodyText',
+                displayName: 'Body',
+                type: 'long-text',
+                required: true
+            },
+            {
+                fieldName: 'ImageSource',
+                displayName: 'Image',
+                type: 'image',
+                required: true
+            }
+
+        ],
+        options: [
+            {
+                fieldName: 'TextAlign',
+                displayName: 'Text Align',
+                type: 'text-align',
+                required: true
+            }
+        ]
 
     }
 }

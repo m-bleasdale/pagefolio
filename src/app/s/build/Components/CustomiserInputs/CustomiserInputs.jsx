@@ -169,7 +169,7 @@ function PageLogoUpload({onUpdate}) {
     }
 
     return (
-        <div className={styles.PageLogoUploadContainer}>
+        <div className={styles.ImageUploadContainer}>
             <input type="file" accept="image/*" onChange={handleUpload} />
             {uploading && <p>Uploading...</p>}
             {uploadedFileURL && (
@@ -178,6 +178,69 @@ function PageLogoUpload({onUpdate}) {
         </div>
     )
 }
+
+function ImageUpload({onUpdate}) {
+    const {pageID} = useContext(EditorContext);
+    const PageID = pageID[0].id;
+
+    const [uploadedFileURL, setUploadedFileURL] = useState();
+    const [uploading, setUploading] = useState(false);
+    
+    //Uploads to temp-page-logos
+    async function handleUpload(e) {
+        const supabase = createClient();
+
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploading(true);
+
+        const fileExt = file.name.split('.').pop();
+        const timestamp = Date.now();
+        const fileName = `temp-${PageID}-${timestamp}.${fileExt}`;
+
+        const { error: uploadError } = await supabase.storage
+            .from('temp-images')
+            .upload(fileName, file, {
+                upsert: true,
+                contentType: file.type || 'image/png',
+            });
+      
+
+        if (uploadError) {
+            //Need error handling here
+            console.error(uploadError);
+            setUploading(false);
+            return;
+        }
+
+        const { data, error: downloadError } = await supabase.storage
+            .from('temp-images')
+            .getPublicUrl(fileName);
+
+        if (downloadError) {
+            //Need error handling here
+            console.error(downloadError);
+            setUploading(false);
+            return;
+        }
+
+        setUploadedFileURL(data.publicUrl);
+        setUploading(false);
+        onUpdate(data.publicUrl);
+    }
+
+    return (
+        <div className={styles.ImageUploadContainer}>
+            <input type="file" accept="image/*" onChange={handleUpload} />
+            {uploading && <p>Uploading...</p>}
+            {uploadedFileURL && (
+                <img src={uploadedFileURL} alt="Uploaded preview" style={{ width: 100, height: 100 }} />
+            )}
+        </div>
+    )
+}
+
 
 function SocialSelector ({onUpdate, initialValue}){
     const [linkedSocials, setLinkedSocials] = useState([]);
@@ -352,14 +415,66 @@ function ColourSelector({ defaultColours, colour, onUpdate }) {
         debouncedUpdate(newColour);
     };
 
-    const PresetOptions = [
-        ["#F5FFFA", "#F8F8FF", "#FFFAFA", "#FAFAFA", "#FAF0E6", "#F5F5DC", "#E3DAC9"],
+    const ForegroundOptions = [
         ['#ffffff', '#f3f3f3', '#efefef', '#d9d9d9', '#999999', '#666666', '#000000'],
         ['#dd7e6b', '#ea9999', '#f9cb9c', '#ffe599', '#b6d7a8', '#a4c2f4', '#b4a7d6'],
         ['#cc4125', '#e06666', '#f6b26b', '#ffd966', '#93c47d', '#6d9eeb', '#8e7cc3'],
         ['#a61c00', '#cc0000', '#e69138', '#f1c232', '#6aa84f', '#3c78d8', '#674ea7'],
-        ['#85200c', '#990000', '#b45f06', '#bf9000', '#38761d', '#1155cc', '#351c75'],
+        ['#85200c', '#990000', '#b45f06', '#bf9000', '#38761d', '#1155cc', '#351c75']
     ]
+
+    const ssBackgroundOptions = [
+        ["#FFFFFF", "#F3FAFB", "#F3F7F4", "#F9F5F6", "#F5F3F7", "#F8F3EF"],
+        ["#FAFAFA", "#F4FBFD", "#EDF7F1", "#F8F1F3", "#F6F0FA", "#F8F0E7"],
+        ["#F5F5F5", "#EDF6F9", "#E5F0EA", "#F4ECEF", "#EDE6F0", "#EFE4DB"],
+        ["#2A2A2A", "#24363A", "#2B3A32", "#3A2D33", "#3B2E3F", "#2B1F1A"],
+        ["#1A1A1A", "#16272A", "#1F2C25", "#2A1F24", "#2A1F2D", "#1F1510"]
+    ];
+
+    const BackgroundOptions = [
+        ["#e8f6f3", "#d0ece7", "#a2d9ce", "#73c6b6", "#45b39d", "#16a085", "#138d75", "#117a65", "#0e6655", "#0b5345"],
+        ["#eafaf1", "#d5f5e3", "#abebc6", "#82e0aa", "#58d68d", "#2ecc71", "#28b463", "#239b56", "#1d8348", "#186a3b"],
+        ["#ebf5fb", "#d6eaf8", "#aed6f1", "#85c1e9", "#5dade2", "#3498db", "#2e86c1", "#2874a6", "#21618c", "#1b4f72"],
+        ["#eaf2f8", "#d4e6f1", "#a9cce3", "#7fb3d5", "#5499c7", "#2980b9", "#2471a3", "#1f618d", "#1a5276", "#154360"],
+        ["#f5eef8", "#ebdef0", "#d7bde2", "#c39bd3", "#af7ac5", "#9b59b6", "#884ea0", "#76448a", "#633974", "#512e5f"],
+        ["#f4ecf7", "#e8daef", "#d2b4de", "#bb8fce", "#a569bd", "#8e44ad", "#7d3c98", "#6c3483", "#5b2c6f", "#4a235a"],
+        ["#ebedef", "#d6dbdf", "#aeb6bf", "#85929e", "#5d6d7e", "#34495e", "#2e4053", "#283747", "#212f3c", "#1b2631"],
+        ["#eaecee", "#d5d8dc", "#abb2b9", "#808b96", "#566573", "#2c3e50", "#273746", "#212f3d", "#1c2833", "#17202a"],
+        ["#fef9e7", "#fcf3cf", "#f9e79f", "#f7dc6f", "#f4d03f", "#f1c40f", "#d4ac0d", "#b7950b", "#9a7d0a", "#7d6608"],
+        ["#fef5e7", "#fdebd0", "#fad7a0", "#f8c471", "#f5b041", "#f39c12", "#d68910", "#b9770e", "#9c640c", "#7e5109"],
+        ["#fdf2e9", "#fae5d3", "#f5cba7", "#f0b27a", "#eb984e", "#e67e22", "#ca6f1e", "#af601a", "#935116", "#784212"],
+        ["#fbeee6", "#f6ddcc", "#edbb99", "#e59866", "#dc7633", "#d35400", "#ba4a00", "#a04000", "#873600", "#6e2c00"],
+        ["#fdedec", "#fadbd8", "#f5b7b1", "#f1948a", "#ec7063", "#e74c3c", "#cb4335", "#b03a2e", "#943126", "#78281f"],
+        ["#f9ebea", "#f2d7d5", "#e6b0aa", "#d98880", "#cd6155", "#c0392b", "#a93226", "#922b21", "#7b241c", "#641e16"],
+        ["#fdfefe", "#fbfcfc", "#f7f9f9", "#f4f6f7", "#f0f3f4", "#ecf0f1", "#d0d3d4", "#b3b6b7", "#979a9a", "#7b7d7d"],
+        ["#f8f9f9", "#f2f3f4", "#e5e7e9", "#d7dbdd", "#cacfd2", "#bdc3c7", "#a6acaf", "#909497", "#797d7f", "#626567"],
+        ["#f4f6f6", "#eaeded", "#d5dbdb", "#bfc9ca", "#aab7b8", "#95a5a6", "#839192", "#717d7e", "#5f6a6a", "#4d5656"],
+        ["#f2f4f4", "#e5e8e8", "#ccd1d1", "#b2babb", "#99a3a4", "#7f8c8d", "#707b7c", "#616a6b", "#515a5a", "#424949"]
+    ];
+
+
+    const AltBackgroundOptions = [
+        ["#FFFFFF", "#F3FAFB", "#F3F7F4", "#F9F5F6", "#F5F3F7", "#F8F3EF"],
+        ["#E0E0E0", "#D3E3E6", "#CADFD3", "#DDD3D7", "#D8D0DC", "#D9CFC5"],
+        ["#D6D6D6", "#B3D6DE", "#A3D1BB", "#C9AEB7", "#BFA8D1", "#C9AB99"],
+        ["#2A2A2A", "#24363A", "#2B3A32", "#3A2D33", "#3B2E3F", "#2B1F1A"],
+        ["#1A1A1A", "#16272A", "#1F2C25", "#2A1F24", "#2A1F2D", "#1F1510"]
+    ];
+
+    const PrimaryOptions = [
+        ['#ffffff', '#f3f3f3', '#efefef', '#d9d9d9', '#999999', '#666666', '#000000'],
+        ['#dd7e6b', '#ea9999', '#f9cb9c', '#ffe599', '#b6d7a8', '#a4c2f4', '#b4a7d6'],
+        ['#cc4125', '#e06666', '#f6b26b', '#ffd966', '#93c47d', '#6d9eeb', '#8e7cc3'],
+        ['#a61c00', '#cc0000', '#e69138', '#f1c232', '#6aa84f', '#3c78d8', '#674ea7'],
+        ['#85200c', '#990000', '#b45f06', '#bf9000', '#38761d', '#1155cc', '#351c75']
+    ]
+
+    let PresetOptions;
+    if(colour.colourName === "foreground") PresetOptions = ForegroundOptions;
+    else if(colour.colourName === "backgroundColor") PresetOptions = BackgroundOptions;
+    else if(colour.colourName === "altBackgroundColor") PresetOptions = AltBackgroundOptions;
+    else if(colour.colourName === "primary") PresetOptions = PrimaryOptions;
+    else PresetOptions = ForegroundOptions;
 
     return (
         <div className={styles.ColourSelector}>
@@ -393,10 +508,7 @@ function ColourSelector({ defaultColours, colour, onUpdate }) {
                                             handleChange(colourOption);
                                             setShowColourPicker(false);
                                         }}
-                                        style={{
-                                            backgroundColor: colourOption,
-                                            border: rowIndex === 0 || (rowIndex === 1 && (index === 0 || index === 1)) ? '1px solid #e6e6e6' : 'none',
-                                        }}
+                                        style={{backgroundColor: colourOption}}
                                     ></div>
                                 ))}
                             </div>
@@ -483,4 +595,4 @@ function IconSelector({onUpdate}) {
     )
 }
 
-export { OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector, ColourSelector, IconSelector }
+export { OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, ImageUpload, SocialSelector, ColourSelector, IconSelector }

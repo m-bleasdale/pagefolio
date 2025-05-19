@@ -28,10 +28,6 @@ import { React } from 'react';
 
 import HeroStyles from './Hero.module.css';
 
-function ImageBackground(props) {
-
-}
-
 export default function Hero({data, options, global}) {
 
     return (
@@ -42,7 +38,12 @@ export default function Hero({data, options, global}) {
             >
                 <div 
                     className={HeroStyles.TextContainer}
-                    style={data.TitleText || data.SubTitleText ? {background: "rgba(0, 0, 0, 0.4) 0%"} : null}
+                    style={(data.TitleText || data.SubTitleText) && data.ImageSource ? {
+                        background: "rgba(0, 0, 0, 0.4) 0%",
+                        color: "#FDFDFD"
+                    } : {
+                        color: global.foreground
+                    }}
                 >
                     <h1 className={HeroStyles.Heading} style={{ textAlign: options.TextAlign}}>
                         {data.TitleText}

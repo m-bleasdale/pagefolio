@@ -11,7 +11,8 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
     const [colourFields, setColourFields] = useState([
         { displayName: 'Foreground', colourName: 'foreground' },
         { displayName: 'Background', colourName: 'backgroundColor' },
-        { displayName: 'Primary Colour', colourName: 'primary' }
+        { displayName: 'Primary Colour', colourName: 'primary' },
+        { displayName: 'Border', colourName: 'border' }
     ]);
 
     //Default values for options
@@ -22,7 +23,8 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
             setColourFields([
                 { displayName: 'Foreground', colourName: 'foreground' },
                 { displayName: 'Background', colourName: 'backgroundColor' },
-                { displayName: 'Primary Colour', colourName: 'primary' }
+                { displayName: 'Primary Colour', colourName: 'primary' },
+                { displayName: 'Border', colourName: 'border' }
             ]);
         }
         else if (theme === 'Duotone'){
@@ -30,6 +32,7 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
                 { displayName: 'Foreground', colourName: 'foreground'},
                 { displayName: 'Background', colourName: 'backgroundColor' },
                 { displayName: 'Primary Colour', colourName: 'primary' },
+                { displayName: 'Border', colourName: 'border' },
                 { displayName: 'Alternative Background', colourName: 'altBackgroundColor' }
             ])
         }

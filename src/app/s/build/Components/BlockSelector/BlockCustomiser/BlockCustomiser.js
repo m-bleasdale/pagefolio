@@ -3,7 +3,7 @@ import { React, useEffect, useState } from 'react';
 import styles from './BlockCustomiser.module.css';
 
 import fields from './CustomiserFields';
-import {OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, SocialSelector, IconSelector} from '../../CustomiserInputs/CustomiserInputs';
+import {OptionSelector, TextAlign, SmallTextBox, LargeTextArea, PageLogoUpload, ImageUpload, SocialSelector, IconSelector} from '../../CustomiserInputs/CustomiserInputs';
 
 function Input ({onUpdate, type, options, initialValue}) {
 
@@ -14,6 +14,7 @@ function Input ({onUpdate, type, options, initialValue}) {
     if(type === 'socials') return <SocialSelector initialValue={initialValue} onUpdate={(newSocialList) => onUpdate(newSocialList)} />
     if(type === 'long-text') return <LargeTextArea initialValue={initialValue} onUpdate={(text) => onUpdate(text)} />
     if(type === 'icon') return <IconSelector initialValue={initialValue} onUpdate={(iconName) => onUpdate(iconName)} />
+    if(type === 'image') return <ImageUpload initialValue={initialValue} onUpdate={(tempURL) => onUpdate(tempURL)} />
 
 }
 
@@ -40,9 +41,12 @@ export default function BlockCustomiser ({blockType, initialData, onConfirmation
             }
         }
 
+        let dataExists = false;
+
         for(const dataFieldIndex in fields[blockType].data)
         {
             const dataField = fields[blockType].data[dataFieldIndex];
+            if(dataField) dataExists = true;
             if(dataField.required && !data.data[dataField.fieldName]){
                 setError(`${dataField.displayName} is required`);
                 return;

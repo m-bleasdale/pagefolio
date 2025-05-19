@@ -14,6 +14,7 @@
     width: 100%;
     background-size: cover;  
     border-radius: 26px;
+    background-position: center;
 }
 
 .TextContainer{
@@ -26,7 +27,6 @@
     gap: 15px;
     border-radius: inherit;
     height: 100%;
-    color: var(--background);
 }
 
 .Heading {

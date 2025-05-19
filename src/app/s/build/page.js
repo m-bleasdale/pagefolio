@@ -28,7 +28,7 @@ const temp_global = {
     primary: '#D52B1E', //Mainly used for buttons or icons
     foreground_onPrimary: '#ffffff', //Used when primary colour is a background and foreground colour is hard to see
     accent: '#f0f0f0', //Mainly used for secondary buttons or icons
-    border: '1px solid #dddddd', //"none" if no border or "2px solid <color>"
+    border: '#dddddd', //"none" if no border or "2px solid <color>"
     shadowsEnabled: false    
 }
 
@@ -55,7 +55,7 @@ export default function Build() {
         foreground_light_onAlt: '#4D4D4D',
         primary: '#3686F7',
         foreground_onPrimary: '#ffffff',
-        border: '1px solid #dddddd',
+        border: '#dddddd',
         shadowsEnabled: false,
         theme: 'Monotone'
     })
