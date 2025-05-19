@@ -44,73 +44,71 @@ export default function GlobalOptions({initialOptions, onUpdate}) {
 
     function handleColourUpdate(colourName, value) {
         setOptions((prev) => {
-            //Set foreground, background, primary (and alt bg) to inputted value
-            const newOptions = {...prev, [colourName]: value };
+            const newOptions = { ...prev, [colourName]: value };
 
-            //Set alts to be normal values if monotone
-            if(theme === 'Monotone' && colourName === 'backgroundColor'){
-                newOptions.altBackgroundColor = value;
-            }
+            const getLuminance = (hex) => {
+                const num = parseInt(hex.replace('#', ''), 16);
+                const r = (num >> 16) & 0xff;
+                const g = (num >> 8) & 0xff;
+                const b = num & 0xff;
+                return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            };
 
-            //Work out lighter version of given colour
-            function lightenColour(hex, percent) {
+            const isLight = (hex) => getLuminance(hex) >= 165;
+            const isDark = (hex) => getLuminance(hex) < 90;
+
+            const lightenColour = (hex, percent) => {
                 const num = parseInt(hex.replace('#', ''), 16);
                 const r = Math.min(255, Math.floor((num >> 16) + (255 - (num >> 16)) * percent));
                 const g = Math.min(255, Math.floor(((num >> 8) & 0x00FF) + (255 - ((num >> 8) & 0x00FF)) * percent));
                 const b = Math.min(255, Math.floor((num & 0x0000FF) + (255 - (num & 0x0000FF)) * percent));
                 return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
-            }
+            };
 
+            const baseForeground = prev.foreground;
+
+            // If foreground is updated, just update foreground_light
             if (colourName === 'foreground') {
                 newOptions.foreground_light = lightenColour(value, 0.3);
-                if (theme === 'Monotone') {
-                    newOptions.foreground_light_onAlt = lightenColour(value, 0.3);
-                }
             }
 
-            // Determine if foreground_onPrimary should match foreground or be its inverse
-            function isColourDark(hex) {
-                const num = parseInt(hex.replace('#', ''), 16);
-                const r = (num >> 16) & 0xff;
-                const g = (num >> 8) & 0xff;
-                const b = num & 0xff;
-                // Calculate luminance
-                const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-                return luminance < 128; // Dark if luminance is less than 128
+            // Monotone: keep altBackground in sync with backgroundColor
+            if (theme === 'Monotone' && colourName === 'backgroundColor') {
+                newOptions.altBackgroundColor = value;
             }
 
-            if (colourName === 'primary') {
-                const isDark = isColourDark(value);
-                newOptions.foreground_onPrimary = isDark ? '#FFFFFF' : prev.foreground;
+            // Determine derived foreground_onPrimary
+            if (colourName === 'primary' || colourName === 'foreground') {
+                const bg = colourName === 'primary' ? value : prev.primary;
+                newOptions.foreground_onPrimary = isDark(bg)
+                    ? '#FFFFFF'
+                    : isLight(bg)
+                        ? '#000000'
+                        : baseForeground;
             }
 
-            //ERROR: When changing foreground colour, onAlt becomes white
-            //ALSO: Consider if monotone is being used, isDark check must also be done on background
-            //and if the theme is monotone, foreground should be lightened if the colour is dark
-            //I've tried to make some fixes, CHECK AGAIN - NOT DONE YET
-            //
-            //Also another issue: when changing background colour to black, altForeground goes white
-            //When turning background back to white, altForeground stays white
-            if (colourName === 'altBackgroundColor') {
-                const isDark = isColourDark(value);
-                newOptions.foreground_onAlt = isDark ? '#FFFFFF' : options.foreground;
-                newOptions.foreground_light_onAlt = lightenColour(newOptions.foreground_onAlt, 0.3);
-            }
-            if (colourName === 'foreground') {
-                const isDark = isColourDark(options.altBackgroundColor);
-                newOptions.foreground_onAlt = isDark ? '#FFFFFF' : value;
-                newOptions.foreground_light_onAlt = lightenColour(newOptions.foreground_onAlt, 0.3);
-            }
-            if (colourName === 'backgroundColor' && theme === 'Monotone') {
-                const isDark = isColourDark(value);
-                newOptions.foreground_onAlt = isDark ? '#FFFFFF' : options.foreground;
-                newOptions.foreground_light_onAlt = lightenColour(newOptions.foreground_onAlt, 0.3);
+            // Determine derived foreground_onAlt
+            if (colourName === 'altBackgroundColor' || colourName === 'foreground' || (theme === 'Monotone' && colourName === 'backgroundColor')) {
+                const altBg = (colourName === 'altBackgroundColor')
+                    ? value
+                    : (theme === 'Monotone' && colourName === 'backgroundColor')
+                        ? value
+                        : prev.altBackgroundColor;
+
+                const fgOnAlt = isDark(altBg)
+                    ? '#FFFFFF'
+                    : isLight(altBg)
+                        ? '#000000'
+                        : baseForeground;
+
+                newOptions.foreground_onAlt = fgOnAlt;
+                newOptions.foreground_light_onAlt = lightenColour(fgOnAlt, 0.3);
             }
 
             return newOptions;
         });
     }
-
+    
     return (
         <div className={styles.Container}>
             <h1>Options</h1>

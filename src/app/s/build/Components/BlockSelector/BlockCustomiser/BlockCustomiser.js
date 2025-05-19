@@ -29,7 +29,7 @@ export default function BlockCustomiser ({blockType, initialData, onConfirmation
         if(initialData && initialData.data){
             setData(initialData);
         }
-    }, [])
+    }, [initialData])
 
     function ValidateThenConfirm() {
         for(const optionFieldIndex in fields[blockType].options)
