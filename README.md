@@ -1,7 +1,7 @@
-#PageFolio
+# PageFolio
 This project is not yet completed, and at present has been paused. Below is an explanation of what problem it is designed to solve.
 
-##What is PageFolio?
+## What is PageFolio?
 **In short, PageFolio is a simple way of showing off who you are by building a hub of information, combined with customisation, without the expensive overhead of a website.**
 
 Small businesses, content creators, professionals, etc, have a unique challenge when it comes to building an online presence. They want to be able to display who they are, what they do, and contact information. There are three ways they may consider to do this:
